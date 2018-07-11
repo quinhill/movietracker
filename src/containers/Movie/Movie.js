@@ -3,7 +3,6 @@ import React from 'react'
 const Movie = (nowPlaying) => {
   
   const {title, overview, poster, ratings} = nowPlaying
-  console.log(poster)
 
   return (
     <div className='movie'>

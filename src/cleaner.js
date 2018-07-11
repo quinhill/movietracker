@@ -4,7 +4,8 @@ const recentMovies = (nowPlaying) => {
       title: movie.title,
       overview: movie.overview,
       poster: movie.poster_path,
-      ratings: movie.vote_average
+      ratings: movie.vote_average,
+      id: movie.id
     }
   })
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import {fetchNowPlaying} from '../../ApiCall'
-import MovieContainer from '../../containers/MovieContainer/MovieContainer';
+import MovieContainer from '../../Components/MovieContainer/MovieContainer';
+import { addMovie } from '../../actions';
 
 
 class App extends Component {
@@ -11,10 +12,13 @@ class App extends Component {
       nowPlaying: []
     }
     
+    
   }
 
   componentDidMount = async () => {
     const nowPlaying = await fetchNowPlaying()
+    const movie = nowPlaying[1];
+    console.log(addMovie(movie))
     this.setState({nowPlaying})
   }
   render() {
