@@ -1,5 +1,5 @@
 import React from 'react'
-import Movie from './Movie'
+import Movie from '../containers/Movie'
 import { connect } from 'react-redux';
 
 export const MovieList = (props) => {
