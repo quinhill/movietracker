@@ -4,7 +4,7 @@ import MovieList from '../../components/MovieList';
 import { fetchNowPlaying } from '../../ApiCall';
 import { addNowPlaying } from '../../actions/'
 import { connect } from 'react-redux';
-import {Login} from '../Login'
+import { Login } from '../Login'
 
 
 class App extends Component {

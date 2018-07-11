@@ -9,3 +9,7 @@ export const fetchNowPlaying = async () => {
   const nowPlaying = recentMovies(fullNowPlaying)
   return nowPlaying
 }
+
+export const postNewAccount = async ({userName, password}) => {
+
+}
