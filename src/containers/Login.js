@@ -43,9 +43,3 @@ export class Login extends Component {
     )
   }
 }
-
-export const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: (userName, password) => dispatch(createAccount(userName, password))
-})
-
-export default connect(null, mapDispatchToProps)(Login)
