@@ -1,8 +1,4 @@
-export const addMovie = ({id, title, rating, overview, poster}) => ({
+export const addMovie = (nowPlaying) => ({
   type: 'ADD_MOVIE',
-  id,
-  title,
-  overview,
-  rating,
-  poster
+  nowPlaying
 })

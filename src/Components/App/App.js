@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import {fetchNowPlaying} from '../../ApiCall'
 import MovieContainer from '../../Components/MovieContainer/MovieContainer';
-import { addMovie } from '../../actions';
+import { connect } from 'react-redux';
 
 
-class App extends Component {
+export class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -17,10 +17,9 @@ class App extends Component {
 
   componentDidMount = async () => {
     const nowPlaying = await fetchNowPlaying()
-    const movie = nowPlaying[1];
-    console.log(addMovie(movie))
     this.setState({nowPlaying})
   }
+
   render() {
     return (
       <div className="App">
@@ -32,4 +31,13 @@ class App extends Component {
   }
 }
 
-export default App;
+// export const mapStateToProps = (state) => ({
+//   movies: state.movies
+// })
+
+// export const mapDispatchToProps = (dispatch) => ({
+//   handleSubmit: (text, id) => dispatch(addTodo(text, id))
+// })
+
+// export default connect(mapStateToProps, mapDispatchToProps)(AddTodoForm)
+
