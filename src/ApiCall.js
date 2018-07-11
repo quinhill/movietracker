@@ -9,3 +9,20 @@ export const fetchNowPlaying = async () => {
   const nowPlaying = recentMovies(fullNowPlaying)
   return nowPlaying
 }
+
+export const postNewAccount = async ({userName, password}) => {
+  const url = 'localhost:3000/api/users/new'
+  const newUser = {
+    userName,
+    password
+  }
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(newUser),
+  })
+  .then(response => response.json())
+  .then(userObj => console.log(userObj))
+  .catch(error => console.log(error))
+  
+}
