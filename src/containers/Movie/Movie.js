@@ -1,6 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux';
 
-const Movie = (nowPlaying) => {
+export const Movie = (nowPlaying) => {
   
   const {title, overview, poster, ratings} = nowPlaying
 
@@ -14,4 +15,8 @@ const Movie = (nowPlaying) => {
   )
 }
 
-export default Movie
+const mapStatetoProps = (state) => ({
+  movies: state.movies
+})
+
+export default connect(mapStatetoProps, null)(Movie);

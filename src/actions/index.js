@@ -1,4 +1,4 @@
-export const addMovie = (nowPlaying) => ({
-  type: 'ADD_MOVIE',
+export const addMovies = (nowPlaying) => ({
+  type: 'ADD_NOW_PLAYING',
   nowPlaying
 })

@@ -3,6 +3,7 @@ import './App.css';
 import {fetchNowPlaying} from '../../ApiCall'
 import MovieContainer from '../../Components/MovieContainer/MovieContainer';
 import { connect } from 'react-redux';
+import { addMovies } from '../../actions';
 
 
 export class App extends Component {
@@ -13,11 +14,6 @@ export class App extends Component {
     }
     
     
-  }
-
-  componentDidMount = async () => {
-    const nowPlaying = await fetchNowPlaying()
-    this.setState({nowPlaying})
   }
 
   render() {
@@ -31,13 +27,13 @@ export class App extends Component {
   }
 }
 
-// export const mapStateToProps = (state) => ({
-//   movies: state.movies
-// })
+export const mapStateToProps = (state) => ({
+  movies: state.movies
+})
 
-// export const mapDispatchToProps = (dispatch) => ({
-//   handleSubmit: (text, id) => dispatch(addTodo(text, id))
-// })
+export const mapDispatchToProps = (dispatch) => ({
+  addMovies: async (fetchNowPlaying) => dispatch(addMovies(await fetchNowPlaying()))
+})
 
-// export default connect(mapStateToProps, mapDispatchToProps)(AddTodoForm)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 

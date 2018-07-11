@@ -7,6 +7,7 @@ import rootReducer from '../src/reducers'
 import { App } from './Components/App/App'
 
 const store = createStore(rootReducer)
+console.log(store.getState());
 
 render(
   <Provider store={store} >
