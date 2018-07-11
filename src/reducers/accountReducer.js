@@ -3,7 +3,8 @@ export const accountReducer = (state = [], action) => {
     case 'CREATE_ACCOUNT':
       return [...state, {
         userName: action.username, 
-        password: action.password
+        password: action.password,
+        loggedIn: false
       }]
     default:
       return state

@@ -3,7 +3,7 @@ export const addNowPlaying = (nowPlaying) => ({
   nowPlaying
 })
 
-export const createAccount = ({userName, password}) => ({
+export const createAccount = (userName, password) => ({
   type: 'CREATE_ACCOUNT',
   userName,
   password

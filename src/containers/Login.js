@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {createAccount} from '../actions'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createAccount } from '../actions'
 import { postNewAccount } from '../ApiCall'
 
 export class Login extends Component {
@@ -22,7 +22,7 @@ export class Login extends Component {
   submitAccount = async (e) => {
     e.preventDefault()
     const postAccount = await postNewAccount(this.state)
-    this.props.handleSubmit(this.state)
+    this.props.handleSubmit(this.state.userName, this.state.password)
   }
 
   render() {
@@ -41,6 +41,7 @@ export class Login extends Component {
             onChange={this.handleChange}
             name='password'
           />
+          <button>Submit</button>
         </form>
       </div>
     )
@@ -48,7 +49,7 @@ export class Login extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: (userName, password) => dispatch(createAccount({userName, password}))
+  handleSubmit: (userName, password) => dispatch(createAccount(userName, password))
 })
 
 export default connect(null, mapDispatchToProps)(Login)
