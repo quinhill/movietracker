@@ -1,39 +1,38 @@
 import React, { Component } from 'react';
 import './App.css';
-import {fetchNowPlaying} from '../../ApiCall'
-import MovieContainer from '../../Components/MovieContainer/MovieContainer';
+import MovieList from '../../components/MovieList';
+import { fetchNowPlaying } from '../../ApiCall';
+import { addNowPlaying } from '../../actions/'
 import { connect } from 'react-redux';
-import { addMovies } from '../../actions';
 
 
-export class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      nowPlaying: []
-    }
-    
-    
+class App extends Component {
+  constructor(props) {
+    super(props)
   }
+
+  
+  componentDidMount = async () => {
+    const movieData = await fetchNowPlaying()
+    this.props.handleFetch(movieData)
+  }
+
 
   render() {
     return (
       <div className="App">
-        <MovieContainer 
-          nowPlaying={this.state.nowPlaying}
-        />
+        <MovieList />
       </div>
     );
   }
 }
 
 export const mapStateToProps = (state) => ({
-  movies: state.movies
+  nowPlaying: state.nowPlaying,
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addMovies: async (fetchNowPlaying) => dispatch(addMovies(await fetchNowPlaying()))
+  handleFetch: (nowPlaying) => dispatch(addNowPlaying(nowPlaying))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
-
