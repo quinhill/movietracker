@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import {fetchNowPlaying} from '../../ApiCall'
-import MovieContainer from '../../containers/MovieContainer/MovieContainer';
+import MovieContainer from '../../Components/MovieContainer/MovieContainer';
+import { connect } from 'react-redux';
+import { addMovies } from '../../actions';
 
 
-class App extends Component {
+export class App extends Component {
   constructor() {
     super()
     this.state = {
       nowPlaying: []
     }
     
+    
   }
 
-  componentDidMount = async () => {
-    const nowPlaying = await fetchNowPlaying()
-    this.setState({nowPlaying})
-  }
   render() {
     return (
       <div className="App">
@@ -28,4 +27,13 @@ class App extends Component {
   }
 }
 
-export default App;
+export const mapStateToProps = (state) => ({
+  movies: state.movies
+})
+
+export const mapDispatchToProps = (dispatch) => ({
+  addMovies: async (fetchNowPlaying) => dispatch(addMovies(await fetchNowPlaying()))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+

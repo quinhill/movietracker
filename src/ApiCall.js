@@ -1,4 +1,4 @@
-import {apiKey} from './ApiKey';
+import { apiKey } from './apiKey';
 import recentMovies from './cleaner';
 
 export const fetchNowPlaying = async () => {
