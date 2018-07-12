@@ -15,9 +15,10 @@ export const addNewUser = async (newUserInfo) => {
   const url = 'http://localhost:3000/api/users/new';
   const enterAccount = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newUserInfo)
   });
 
   const response = await enterAccount.json();
+  return response.message
 };
