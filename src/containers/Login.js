@@ -26,7 +26,6 @@ export class Login extends Component {
   submitAccount = async (e) => {
     e.preventDefault()
     const postAccount = await addNewUser(this.state)
-    this.props.handleSubmit(this.state.userName, this.state.password)
   }
 
   render() {
