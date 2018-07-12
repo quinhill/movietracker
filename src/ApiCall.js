@@ -20,5 +20,4 @@ export const addNewUser = async (newUserInfo) => {
   });
 
   const response = await enterAccount.json();
-  console.log(response);
 };
