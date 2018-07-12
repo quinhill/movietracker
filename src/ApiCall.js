@@ -21,3 +21,7 @@ export const addNewUser = async (newUserInfo) => {
   const response = await enterAccount.json();
   return response
 };
+
+export const postFavorite = async () => {
+  
+}
