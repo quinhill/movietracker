@@ -54,7 +54,8 @@ describe('addNewUser', () => {
     {"body": "{\"name\":\"asdfas\",\"password\":\"asdfasdf\",\"email\":\"asdfasdf\"}", 
     "headers": {"Content-Type": "application/json"}, 
     "method": "POST"}];
-    expect(await ApiCall.addNewUser(fetchArgs)).toEqual(expectedOutput.message)
+    const result = await ApiCall.addNewUser(fetchArgs)
+    expect(result.message).toEqual(expectedOutput.message)
 
   })
 })
