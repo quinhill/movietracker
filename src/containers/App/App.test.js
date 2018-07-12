@@ -1,9 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
+import { shallow } from 'enzyme';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+describe('App', () => {
+  let store;
+  let wrapper;
+  let initialState;
+  let mockStore;
+  beforeEach(() => {
+    initialState = {
+      nowPlaying: [{}]
+    }
+    mockStore = configureStore();
+    store = mockStore(initialState)
+    wrapper = shallow(<Provider store={store}>
+                        <App />
+                      </Provider>, { disableLifeCycleMethods: true });
+  })
+
+  it('should match snapshot upon render', () => {
+
+    expect(wrapper).toMatchSnapshot();
+  })
+})
+

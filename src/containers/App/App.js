@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import MovieList from '../../components/MovieList';
+import MovieList from '../MovieList';
 import { fetchNowPlaying } from '../../ApiCall';
 import { addNowPlaying } from '../../actions/'
 import { connect } from 'react-redux';
-import {Login} from '../Login'
-
+import Header from '../../components/Header';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor(props) {
@@ -22,11 +22,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login />
+        <Header />
         <MovieList />
       </div>
     );
   }
+}
+
+App.Proptypes = {
+  nowPlaying: PropTypes.arrayOf(PropTypes.object),
+  handleFetch: PropTypes.func
 }
 
 export const mapStateToProps = (state) => ({

@@ -6,8 +6,8 @@ const recentMovies = (nowPlaying) => {
       poster: movie.poster_path,
       ratings: movie.vote_average,
       id: movie.id
-    }
-  })
-}
+    };
+  });
+};
 
-export default recentMovies
+export default recentMovies;

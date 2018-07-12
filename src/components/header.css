@@ -1,0 +1,14 @@
+.header {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  height: 100px;
+  background-color: #00564D;
+}
+
+.title {
+  grid-column: 2/3;
+  width: 460px;
+  background-image: url('../assets/movie-tracker-title.png');
+  background-repeat: no-repeat;
+}
+
