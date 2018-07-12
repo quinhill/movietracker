@@ -4,8 +4,7 @@ import MovieList from '../../components/MovieList';
 import { fetchNowPlaying } from '../../ApiCall';
 import { addNowPlaying } from '../../actions/'
 import { connect } from 'react-redux';
-import { Login } from '../Login'
-
+import Header from '../../components/Header';
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login />
+        <Header />
         <MovieList />
       </div>
     );

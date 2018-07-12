@@ -1,6 +1,7 @@
 import React from 'react'
 import Movie from '../containers/Movie'
 import { connect } from 'react-redux';
+import './movie-list.css'
 
 export const MovieList = (props) => {
 
@@ -9,7 +10,7 @@ export const MovieList = (props) => {
   })
 
   return (
-    <div>
+    <div className="movie-list" >
       {nowPlaying}
     </div>
   )
