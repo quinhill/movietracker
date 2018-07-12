@@ -5,7 +5,8 @@ const recentMovies = (nowPlaying) => {
       overview: movie.overview,
       poster: movie.poster_path,
       ratings: movie.vote_average,
-      id: movie.id
+      id: movie.id,
+      favorite: false
     };
   });
 };

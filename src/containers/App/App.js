@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Header from '../../components/Header';
 import PropTypes from 'prop-types';
 import { Route, NavLink, Link, withRouter } from 'react-router-dom';
-import { NewUser } from '../NewUser';
+import { CreateAccount } from '../CreateAccount';
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class App extends Component {
           <Header />
         </div>
         <Route exact path='/' component={MovieList} /> 
-        <Route exact path='/createAccount' render={() => <NewUser/>} />
+        <Route exact path='/createAccount' render={() => <CreateAccount/>} />
       </div>
     );
   }

@@ -1,10 +1,24 @@
 import React from 'react';
 import './movie.css';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { mapStateToProps } from 'redux';
+import { mapDispatchToProps } from 'redux';
+import { postFavorite } from '../ApiCall';
+import { toggleFavorite } from '../actions'
 
-const Movie = (nowPlaying) => {
+export const Movie = (nowPlaying) => {
   
-  const {title, overview, poster, ratings} = nowPlaying
+  const { title, overview, poster, ratings, id } = nowPlaying;
+
+  // const handleFavorite = (e) => {
+  //   const id = e.target.value
+  //   const foundFavorite = nowPlaying.find(movie => (
+  //     movie.id == id
+  //   ))
+  //   postFavorite(foundFavorite)
+  //   nowPlaying.submitFavorite(id)
+  // };
 
   return (
     <div className='movie'>
@@ -18,7 +32,10 @@ const Movie = (nowPlaying) => {
       <div className="overview">
         <p>{overview}</p>
       </div>
-      <button>add to favorites</button>
+      <button
+        // onClick={handleFavorite}
+        value={id}
+      >add to favorites</button>
     </div>
   )
 }
@@ -30,4 +47,8 @@ Movie.Proptypes = {
   ratings: PropTypes.string
 }
 
-export default Movie
+// export const mapDispatchToProps = (dispatch) => {
+//   submitFavorite: (id) => dispatch(toggleFavorite(id))
+// }
+
+// export default connect(null, mapDispatchToProps)(Movie)
