@@ -20,5 +20,5 @@ export const addNewUser = async (newUserInfo) => {
   });
 
   const response = await enterAccount.json();
-  return response.message
+  return response
 };
