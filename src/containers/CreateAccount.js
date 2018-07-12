@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { addNewUser } from '../ApiCall';
 
 export class CreateAccount extends Component {
   constructor(props) {
@@ -17,11 +18,16 @@ export class CreateAccount extends Component {
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    addNewUser(this.state)
+  }
+
   render() {
     return (
       <div className="new-user">
         <h1>Create New Account Here</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input 
             type="text" 
             name="name" 
