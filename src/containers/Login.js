@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { createAccount } from '../actions'
 import { addNewUser } from '../ApiCall'
 import './login.css'
+import PropTypes from 'prop-types';
+
 
 export class Login extends Component {
   constructor() {
@@ -51,6 +53,10 @@ export class Login extends Component {
       </div>
     )
   }
+}
+
+Login.Proptypes = {
+  handleSubmit: PropTypes.func
 }
 
 export const mapDispatchToProps = (dispatch) => ({
