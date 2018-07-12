@@ -2,6 +2,7 @@ import React from 'react'
 import Movie from '../containers/Movie'
 import { connect } from 'react-redux';
 import './movie-list.css'
+import PropTypes from 'prop-types';
 
 export const MovieList = (props) => {
 
@@ -14,6 +15,10 @@ export const MovieList = (props) => {
       {nowPlaying}
     </div>
   )
+}
+
+MovieList.Proptypes = {
+  nowPlaying: PropTypes.arrayOf(PropTypes.object)
 }
 
 export const mapStateToProps = (state) => ({

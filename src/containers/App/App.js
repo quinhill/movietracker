@@ -5,6 +5,7 @@ import { fetchNowPlaying } from '../../ApiCall';
 import { addNowPlaying } from '../../actions/'
 import { connect } from 'react-redux';
 import Header from '../../components/Header';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor(props) {
@@ -26,6 +27,11 @@ class App extends Component {
       </div>
     );
   }
+}
+
+App.Proptypes = {
+  nowPlaying: PropTypes.arrayOf(PropTypes.object),
+  handleFetch: PropTypes.func
 }
 
 export const mapStateToProps = (state) => ({
