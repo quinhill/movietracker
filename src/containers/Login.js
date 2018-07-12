@@ -4,6 +4,7 @@ import { createAccount } from '../actions'
 import { addNewUser } from '../ApiCall'
 import './login.css'
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 
 export class Login extends Component {
@@ -49,6 +50,9 @@ export class Login extends Component {
             placeholder="password"
           />
           <button className="submit-button">Log in</button>
+          <NavLink to='/createAccount'>
+            Create New User
+          </NavLink>
         </form>
       </div>
     )
