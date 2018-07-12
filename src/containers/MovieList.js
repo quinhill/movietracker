@@ -6,13 +6,15 @@ import PropTypes from 'prop-types';
 
 export const MovieList = ({nowPlaying}) => {
 
-  const mappedNowPlaying = nowPlaying.map(movie => {
-    return <Movie {...movie} />
-  })
+  const mappedNowPlaying = () => (
+    nowPlaying.map((movie, index) => (
+      <Movie {...movie} key={index}/>
+    ))
+  )
 
   return (
     <div className="movie-list" >
-      {mappedNowPlaying}
+      { mappedNowPlaying() }
     </div>
   )
 }

@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Login } from './Login';
 import { shallow, mount } from 'enzyme';
 import { createAccount } from '../actions';
-import { mapDispatchToProps } from './App/App';
+import { mapDispatchToProps } from './Login';
 
 
 describe('Login', () => {
   let wrapper
-  let mockStore;
-  let store;
-  let initialState;
-  let mockAddNewUser;
 
   beforeEach(() => {
     wrapper = shallow(<Login handleSubmit={jest.fn()}

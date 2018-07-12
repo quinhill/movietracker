@@ -1,24 +1,16 @@
 import React from 'react';
-import MovieList from './MovieList';
+import { MovieList } from './MovieList';
 import { shallow } from 'enzyme';
-import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
 import { mapStateToProps } from './MovieList';
 
 
 describe('MovieList', () => {
-  let mockStore;
   let wrapper;
-  let initialState;
+  let mockNowPlaying
 
   beforeEach(() => {
-    initialState = {
-      nowPlaying: [{}]
-    }
-    mockStore = configureStore(initialState)
-    wrapper = shallow(<Provider store={mockStore} >
-                        <MovieList />
-                      </Provider>)
+    mockNowPlaying = [{}, {}]
+    wrapper = shallow(<MovieList nowPlaying={mockNowPlaying}/>)
   })
 
   it('should match snapshot', () => {
