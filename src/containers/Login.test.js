@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Login } from './Login';
 import { shallow, mount } from 'enzyme';
+import { createAccount } from '../actions';
+import { mapDispatchToProps } from './App/App';
 
 
 describe('Login', () => {
@@ -50,5 +52,18 @@ describe('Login', () => {
     wrapper.instance().submitAccount(mockEvent);
     wrapper.simulate('submit');
     expect(spy).toHaveBeenCalled();
+  })
+
+  describe('mapDispatchToProps', () => {
+
+    it('should call dispatch when using a function from MDTP', () => {
+      const mockDispatch = jest.fn()
+      const actionToDispatch = createAccount('michael', 'password')
+
+      const mappedProps = mapDispatchToProps(mockDispatch)
+
+      mappedProps.handleSubmit('michael', 'password')
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
   })
 })
