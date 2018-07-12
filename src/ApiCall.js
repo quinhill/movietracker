@@ -10,19 +10,15 @@ export const fetchNowPlaying = async () => {
   return nowPlaying
 }
 
-export const postNewAccount = async ({userName, password}) => {
-  const url = 'localhost:3000/api/users/new'
-  const newUser = {
-    userName,
-    password
-  }
-  const response = await fetch(url, {
+
+export const addNewUser = async (newUserInfo) => {
+  const url = 'http://localhost:3000/api/users/new';
+  const enterAccount = await fetch(url, {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(newUser),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newUserInfo)
   })
-  .then(response => response.json())
-  .then(userObj => console.log(userObj))
-  .catch(error => console.log(error))
-  
+
+  const response = await enterAccount.json();
+  console.log(response);
 }
