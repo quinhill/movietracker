@@ -1,6 +1,6 @@
 .movie {
   display: grid;
-  grid-template-rows: 7% 60% 33%;
+  grid-template-rows: 7% 58% 30% 5%;
   height: 500px;
   width: 350px;
   margin: 10px;

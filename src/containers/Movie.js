@@ -18,6 +18,7 @@ const Movie = (nowPlaying) => {
       <div className="overview">
         <p>{overview}</p>
       </div>
+      <button>add to favorites</button>
     </div>
   )
 }
