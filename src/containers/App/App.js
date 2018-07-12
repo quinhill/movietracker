@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import MovieList from '../../components/MovieList';
+import MovieList from '../MovieList';
 import { fetchNowPlaying } from '../../ApiCall';
 import { addNowPlaying } from '../../actions/'
 import { connect } from 'react-redux';
