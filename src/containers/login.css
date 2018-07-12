@@ -1,0 +1,40 @@
+.login {
+  display: flex;
+  justify-content: flex-end;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 4px 10px 0 0;
+}
+
+input {
+  padding-left: 8px;
+  height: 20px;
+  width: 205px;
+  border-radius: 10px;
+  margin: 3px;
+  font-family: 'Poppins', sans-serif;
+  color: #717171;
+  font-size: 15px;
+  border: none;
+}
+
+button {
+  height: 20px;
+  width: 212px;
+  border-radius: 10px;
+  margin: 5px;
+  color: #282828;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #969696;
+  border: none;
+}
+
+button:hover {
+  background-color: #282828;
+  color: #969696;
+}

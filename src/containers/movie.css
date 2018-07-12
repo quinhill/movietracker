@@ -1,0 +1,46 @@
+.movie {
+  display: grid;
+  grid-template-rows: 7% 60% 33%;
+  height: 500px;
+  width: 350px;
+  margin: 10px;
+  color: #282828;
+  box-shadow: 1px 1px 10px #969696;
+  background-color: #00897C;
+  border-radius: 5px;
+}
+
+.title-ratings-div {
+  display: grid;
+  grid-template-columns: 90% 10%;
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+h4 {
+  margin: 0
+}
+
+.overview {
+  padding: 25px;
+  overflow: hidden;
+}
+
+p {
+  width: 100%;
+  height: 100%;
+  padding-right: 40px;
+  overflow-y: scroll;
+  box-sizing: content-box;
+  font-size: 15px;
+  line-height: 15px;
+  margin: 0;
+}
+
+.poster {
+  height: 300px;
+  box-shadow: 1px 1px 10px #282828;
+}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createAccount } from '../actions'
-import { postNewAccount } from '../ApiCall'
+import { addNewUser } from '../ApiCall'
+import './login.css'
 
 export class Login extends Component {
   constructor() {
@@ -21,27 +22,31 @@ export class Login extends Component {
 
   submitAccount = async (e) => {
     e.preventDefault()
-    const postAccount = await postNewAccount(this.state)
+    const postAccount = await addNewUser(this.state)
     this.props.handleSubmit(this.state.userName, this.state.password)
   }
 
   render() {
     return (
-      <div>
+      <div className="login">
         <form onSubmit={this.submitAccount}>
-          <input 
-            type="text" 
+          <input
+            className="username" 
+            type="email" 
             value={this.state.userName}
             onChange={this.handleChange}
             name='userName'
+            placeholder="username"
           />
           <input 
+            className="password"
             type="password" 
             value={this.state.password}
             onChange={this.handleChange}
             name='password'
+            placeholder="password"
           />
-          <button>Submit</button>
+          <button className="submit-button">Log in</button>
         </form>
       </div>
     )
