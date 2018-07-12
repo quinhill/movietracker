@@ -1,5 +1,6 @@
-import React from 'react'
-import './movie.css'
+import React from 'react';
+import './movie.css';
+import PropTypes from 'prop-types';
 
 const Movie = (nowPlaying) => {
   
@@ -19,6 +20,13 @@ const Movie = (nowPlaying) => {
       </div>
     </div>
   )
+}
+
+Movie.Proptypes = {
+  title: PropTypes.string,
+  overview: PropTypes.string,
+  poster: PropTypes.string,
+  ratings: PropTypes.string
 }
 
 export default Movie
