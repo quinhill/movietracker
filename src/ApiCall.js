@@ -1,4 +1,4 @@
-import {apiKey} from './ApiKey';
+import { apiKey } from './apiKey';
 import recentMovies from './cleaner';
 
 export const fetchNowPlaying = async () => {
@@ -9,6 +9,7 @@ export const fetchNowPlaying = async () => {
   const nowPlaying = recentMovies(fullNowPlaying)
   return nowPlaying
 }
+
 
 export const addNewUser = async (newUserInfo) => {
   const url = 'http://localhost:3000/api/users/new';
