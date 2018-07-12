@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Movie from './Movie';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('Movie', () => {
 

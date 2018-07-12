@@ -4,21 +4,21 @@ import { connect } from 'react-redux';
 import './movie-list.css'
 import PropTypes from 'prop-types';
 
-export const MovieList = (props) => {
+export const MovieList = ({nowPlaying}) => {
 
-  const nowPlaying = props.nowPlaying.map(movie => {
+  const mappedNowPlaying = nowPlaying.map(movie => {
     return <Movie {...movie} />
   })
 
   return (
     <div className="movie-list" >
-      {nowPlaying}
+      {mappedNowPlaying}
     </div>
   )
 }
 
 MovieList.Proptypes = {
-  nowPlaying: PropTypes.arrayOf(PropTypes.object)
+  nowPlaying: PropTypes.arrayOf(PropTypes)
 }
 
 export const mapStateToProps = (state) => ({
