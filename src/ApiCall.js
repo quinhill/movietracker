@@ -19,7 +19,8 @@ export const addNewUser = async (newUserInfo) => {
   });
 
   const response = await enterAccount.json();
-  return response
+  console.log(response)
+  return response;
 };
 
 export const postFavorite = async () => {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { addNewUser } from '../ApiCall';
+import { connect } from 'react-redux';
+import { createAccount } from '../actions';
 
 export class CreateAccount extends Component {
   constructor(props) {
@@ -18,16 +20,17 @@ export class CreateAccount extends Component {
     })
   }
 
-  handleSubmit = (e) => {
+  submitAccount = async (e) => {
     e.preventDefault()
-    addNewUser(this.state)
+    const newUser = await addNewUser(this.state);
+    this.props.handleSubmit(newUser)
   }
 
   render() {
     return (
       <div className="new-user">
         <h1>Create New Account Here</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.submitAccount}>
           <input 
             type="text" 
             name="name" 
@@ -54,4 +57,8 @@ export class CreateAccount extends Component {
       </div>
     )
   }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  handleSubmit: (newUser) => dispatch(createAccount(newUser))
 }
