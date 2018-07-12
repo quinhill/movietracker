@@ -6,6 +6,8 @@ import { addNowPlaying } from '../../actions/'
 import { connect } from 'react-redux';
 import Header from '../../components/Header';
 import PropTypes from 'prop-types';
+import { Route, NavLink, Link, withRouter } from 'react-router-dom';
+import { NewUser } from '../NewUser';
 
 class App extends Component {
   constructor(props) {
@@ -22,8 +24,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <MovieList />
+        <div>
+          <Header />
+        </div>
+        <Route exact path='/' component={MovieList} /> 
+        <Route exact path='/createAccount' render={() => <NewUser/>} />
       </div>
     );
   }
@@ -42,4 +47,4 @@ export const mapDispatchToProps = (dispatch) => ({
   handleFetch: (nowPlaying) => dispatch(addNowPlaying(nowPlaying))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

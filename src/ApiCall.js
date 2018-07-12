@@ -10,7 +10,6 @@ export const fetchNowPlaying = async () => {
   return nowPlaying;
 };
 
-
 export const addNewUser = async (newUserInfo) => {
   const url = 'http://localhost:3000/api/users/new';
   const enterAccount = await fetch(url, {
