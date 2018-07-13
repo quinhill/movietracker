@@ -35,7 +35,7 @@ export class CreateAccount extends Component {
     if (password !== repeatPassword) {
       errorMessage = 'Your password does not match the repeated password'
       this.setState({ errorMessage })
-    } else if (!name || name.split(' ').length < 2) {
+    } else if (name.split(' ').length < 2) {
       errorMessage = 'Please make sure you have entered your first and last name'
       this.setState({ errorMessage })
     } else if (!email) {
