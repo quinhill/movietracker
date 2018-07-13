@@ -7,6 +7,11 @@
   background-image: url('../assets/mekong-green.png')
 }
 
+h1{
+  color: #282828;
+  margin: 10px;
+}
+
 .account-form {
   width: 200px;
 }

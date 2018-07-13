@@ -12,3 +12,8 @@ export const createAccount = (newUser) => ({
   type: 'CREATE_ACCOUNT',
   newUser
 })
+
+export const logIn = (id) => ({
+  type: 'LOG_IN',
+  id
+})

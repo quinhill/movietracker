@@ -4,7 +4,7 @@ import { accountReducer } from './accountReducer';
 
 const rootReducer = combineReducers({
   nowPlaying: movieReducer,
-  accounts: accountReducer
+  user: accountReducer
 })
 
 export default rootReducer;

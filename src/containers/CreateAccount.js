@@ -101,8 +101,12 @@ export class CreateAccount extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  handleSubmit: (newUser) => dispatch(createAccount(newUser))
-}
+export const mapStateToProps = (state) => ({
+  user: state.user
+})
 
-export default connect(null, mapDispatchToProps)(CreateAccount)
+export const mapDispatchToProps = (dispatch) => ({
+  handleSubmit: (newUser) => dispatch(createAccount(newUser))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount)

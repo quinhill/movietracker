@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createAccount } from '../actions'
-import { addNewUser } from '../ApiCall'
+import { logIn } from '../actions'
+import { checkForUser } from '../ApiCall'
 import './login.css'
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -25,7 +25,7 @@ export class Login extends Component {
 
   submitAccount = async (e) => {
     e.preventDefault()
-    const postAccount = await addNewUser(this.state)
+    const fetchAccount = await checkForUser(this.state)
   }
 
   render() {
@@ -63,7 +63,7 @@ Login.Proptypes = {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: (userName, password) => dispatch(createAccount(userName, password))
+  handleSubmit: (userName, password) => dispatch(logIn(userName, password))
 })
 
 export default connect(null, mapDispatchToProps)(Login)
