@@ -29,7 +29,7 @@ export const addNewUser = async (newUserInfo) => {
     return response;
   }
   catch(error) {
-    return error.message
+    return error
   }
 };
 
