@@ -1,9 +1,9 @@
 export const accountReducer = (state = {}, action) => {
   switch(action.type) {
     case 'CREATE_ACCOUNT':
-      return { ...action.newUser }
+      return action.newUser
     case 'LOG_IN':
-      return action.id
+      return action.user
     default:
       return state
   } 

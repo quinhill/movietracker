@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Header from '../../components/Header';
 import PropTypes from 'prop-types';
 import { Route, withRouter } from 'react-router-dom';
-import { CreateAccount } from '../CreateAccount';
+import CreateAccount from '../CreateAccount';
 
 class App extends Component {
 

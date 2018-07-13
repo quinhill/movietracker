@@ -25,7 +25,8 @@ export class Login extends Component {
 
   submitAccount = async (e) => {
     e.preventDefault()
-    const fetchAccount = await checkForUser(this.state)
+    const fetchAccount = await checkForUser(this.state);
+    this.props.handleSubmit(fetchAccount)
   }
 
   render() {
@@ -63,7 +64,7 @@ Login.Proptypes = {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: (email, password) => dispatch(logIn(email, password))
+  handleSubmit: (user) => dispatch(logIn(user))
 })
 
 export default connect(null, mapDispatchToProps)(Login)

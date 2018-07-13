@@ -18,14 +18,21 @@ export const addNewUser = async (newUserInfo) => {
     body: JSON.stringify(newUserInfo)
   });
   const response = await enterAccount.json();
-  return response.id;
+  return response;
 };
 
 export const checkForUser = async (user) => {
   const url = 'http://localhost:3000/api/users';
-  const response = await fetch(url);
+  user.email = user.email.toLowerCase();
+  console.log(user);
+  const optionsObj = {
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  }
+  const response = await fetch(url, optionsObj);
   const userData = await response.json();
-  return userData.id;
+  return userData.data
 };
 
 export const postFavorite = async () => {
