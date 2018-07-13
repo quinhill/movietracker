@@ -3,6 +3,7 @@ import './movie.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { promptCreate } from '../actions';
+import { postFavorite } from '../ApiCall';
 
 export const Movie = (props) => {
   
@@ -16,11 +17,13 @@ export const Movie = (props) => {
   } = props;
 
   const handleFavorite = (e) => {
+    // const movie = {movie_id: id, user_id: user.id, title, poster_path: poster}
     const id = e.target.value;
     if(!props.user.name) {
       props.handlePromptCreate()
+    } else {
+      postFavorite();
     }
-    // checkUser(id);
   }
 
   return (

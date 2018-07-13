@@ -51,6 +51,15 @@ export const checkForUser = async (user) => {
   }
 };
 
-export const postFavorite = async () => {
-  
+export const postFavorite = async (movie) => {
+  const url = 'http://localhost:3000/api/users/favorites/new';
+  const optionsObj = {
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(movie)
+  }
+  const response = await fetch(url, optionsObj)
+  const result = await response.json();
+  console.log(result);
+  return result;
 };
