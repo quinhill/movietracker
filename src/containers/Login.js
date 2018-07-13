@@ -49,8 +49,8 @@ export class Login extends Component {
             placeholder="password"
           />
           <button className="submit-button">Log in</button>
-          <NavLink to='/createAccount'>
-            Create New User
+          <NavLink className="create-account" to='/createAccount'>
+            Create Account
           </NavLink>
         </form>
       </div>

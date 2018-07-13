@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { addNewUser } from '../ApiCall';
 import { connect } from 'react-redux';
 import { createAccount } from '../actions';
+import './create-account.css';
 
 export class CreateAccount extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       name: '',
       email: '',
@@ -30,8 +31,9 @@ export class CreateAccount extends Component {
     return (
       <div className="new-user">
         <h1>Create New Account Here</h1>
-        <form onSubmit={this.submitAccount}>
+        <form className="account-form" onSubmit={this.submitAccount}>
           <input 
+            className="user-form"
             type="text" 
             name="name" 
             placeholder="full name"
@@ -39,6 +41,7 @@ export class CreateAccount extends Component {
             onChange={this.handleChange}
           />
           <input 
+            className="user-form"
             type="email" 
             name="email" 
             placeholder="email"
@@ -46,13 +49,14 @@ export class CreateAccount extends Component {
             onChange={this.handleChange}
           />
           <input 
+            className="user-form"
             type="password" 
             name="password" 
             placeholder="password"
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <button>Create Account</button>
+          <button className="create-account-button">Create Account</button>
         </form>
       </div>
     )
@@ -62,3 +66,5 @@ export class CreateAccount extends Component {
 const mapDispatchToProps = (dispatch) => {
   handleSubmit: (newUser) => dispatch(createAccount(newUser))
 }
+
+export default connect(null, mapDispatchToProps)(CreateAccount)
