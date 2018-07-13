@@ -27,8 +27,8 @@ export const checkForUser = async (user) => {
   const response = await fetch(url);
   const userData = await response.json();
   return userData.id;
-}
+};
 
 export const postFavorite = async () => {
   
-}
+};

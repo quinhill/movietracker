@@ -17,7 +17,7 @@ const renderedApp = (<Provider store={store}>
                       <BrowserRouter>
                         <App />
                       </BrowserRouter>
-                     </Provider>)
+                     </Provider>);
 render(renderedApp,
   document.getElementById('root')
 );
