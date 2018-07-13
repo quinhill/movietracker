@@ -17,7 +17,6 @@ export const addNewUser = async (newUserInfo) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newUserInfo)
   });
-
   const response = await enterAccount.json();
   return response.id;
 };
@@ -27,8 +26,8 @@ export const checkForUser = async (user) => {
   const response = await fetch(url);
   const userData = await response.json();
   return userData.id;
-}
+};
 
 export const postFavorite = async () => {
   
-}
+};
