@@ -19,7 +19,7 @@ export const addNewUser = async (newUserInfo) => {
   });
 
   const response = await enterAccount.json();
-  return response;
+  return response.id;
 };
 
 export const checkForUser = async (user) => {

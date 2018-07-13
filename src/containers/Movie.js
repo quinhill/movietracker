@@ -30,10 +30,13 @@ export const Movie = (props) => {
       <div className="overview">
         <p>{overview}</p>
       </div>
+      <div className="add-favorite-div">
       <button
+        className="add-favorite-button"
         onClick={handleFavorite}
         value={id}
       >add to favorites</button>
+      </div>
     </div>
   )
 }

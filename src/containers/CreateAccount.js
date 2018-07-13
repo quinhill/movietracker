@@ -47,8 +47,8 @@ export class CreateAccount extends Component {
   }
 
   createNewUser = async () => {
-    const newUser = await addNewUser(this.state);
-    this.props.handleSubmit(newUser)
+    const id = await addNewUser(this.state);
+    this.props.handleSubmit(id)
   }
 
   render() {
@@ -106,7 +106,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: (newUser) => dispatch(createAccount(newUser))
+  handleSubmit: (id) => dispatch(createAccount(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount)

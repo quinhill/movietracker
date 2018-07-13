@@ -1,6 +1,6 @@
 .movie {
   display: grid;
-  grid-template-rows: 7% 58% 30% 5%;
+  grid-template-rows: 7% 58% 27% 8%;
   height: 500px;
   width: 350px;
   margin: 10px;
@@ -26,7 +26,7 @@ h4 {
 }
 
 .overview {
-  padding: 25px;
+  padding: 25px 25px 0px 25px;
   overflow: hidden;
 }
 
@@ -44,4 +44,14 @@ p {
 .poster {
   height: 300px;
   box-shadow: 1px 1px 10px #282828;
+}
+
+.add-favorite-button {
+  height: 20px;
+  width: 120px;
+  font-size: 12px;
+}
+
+.add-favorite-div {
+  padding-top: 3px;
 }
