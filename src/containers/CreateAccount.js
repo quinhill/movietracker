@@ -23,16 +23,32 @@ export class CreateAccount extends Component {
     })
   }
 
-  submitAccount = async (e) => {
+  submitAccount = (e) => {
+    let errorMessage;
     e.preventDefault()
-    const { password, repeatPassword } = this.state;
-    if (password === repeatPassword) {
-      const newUser = await addNewUser(this.state);
-      this.props.handleSubmit(newUser)
-    } else {
-      const errorMessage = 'Your password does not match the repeated password'
+    const { 
+      password, 
+      repeatPassword, 
+      name, 
+      email
+     } = this.state;
+    if (password !== repeatPassword) {
+      errorMessage = 'Your password does not match the repeated password'
       this.setState({ errorMessage })
+    } else if (!name || name.split(' ').length < 2) {
+      errorMessage = 'Please make sure you have entered your first and last name'
+      this.setState({ errorMessage })
+    } else if (!email) {
+      errorMessage = 'Please make sure you have entered your email address'
+      this.setState({errorMessage})
+    } else {
+      this.createNewUser()
     }
+  }
+
+  createNewUser = async () => {
+    const newUser = await addNewUser(this.state);
+    this.props.handleSubmit(newUser)
   }
 
   render() {
