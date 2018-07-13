@@ -11,7 +11,7 @@ export class Login extends Component {
   constructor() {
     super()
     this.state = {
-      userName: '',
+      email: '',
       password: ''
     }
   }
@@ -35,10 +35,10 @@ export class Login extends Component {
           <input
             className="username" 
             type="email" 
-            value={this.state.userName}
+            value={this.state.email}
             onChange={this.handleChange}
-            name='userName'
-            placeholder="username"
+            name='email'
+            placeholder="email"
           />
           <input 
             className="password"
@@ -63,7 +63,7 @@ Login.Proptypes = {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: (userName, password) => dispatch(logIn(userName, password))
+  handleSubmit: (email, password) => dispatch(logIn(email, password))
 })
 
 export default connect(null, mapDispatchToProps)(Login)
