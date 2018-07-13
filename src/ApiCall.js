@@ -17,7 +17,6 @@ export const addNewUser = async (newUserInfo) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newUserInfo)
   });
-
   const response = await enterAccount.json();
   return response.id;
 };

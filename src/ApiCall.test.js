@@ -4,7 +4,7 @@ import { apiKey } from './apiKey';
 describe('fetchNowPlaying', () => {
 
   it('should call fetch with correct params', async () => {
-    const mockArray = {results: [{}, {}]};
+    const mockArray = { results: [{}, {}] };
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve(
       { json: () => Promise.resolve(mockArray)
       })
@@ -15,7 +15,7 @@ describe('fetchNowPlaying', () => {
   });
 
   it('should return an array of movie Objects', async () => {
-    const mockArray = {results: [{}, {}]};
+    const mockArray = { results: [{}, {}] };
     const expectedOutput = [{}, {}];
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve(
       { json: () => Promise.resolve(mockArray)
@@ -49,7 +49,7 @@ describe('addNewUser', () => {
       json: () => Promise.resolve(expectedOutput)
       })
     );
-    const mockNewUserInfo = { name: 'asdfas', password: 'asdfasdf', email: 'asdfasdf'};
+    const mockNewUserInfo = { name: 'asdfas', password: 'asdfasdf', email: 'asdfasdf' };
     const fetchArgs = ["http://localhost:3000/api/users/new", 
     {"body": "{\"name\":\"asdfas\",\"password\":\"asdfasdf\",\"email\":\"asdfasdf\"}", 
     "headers": {"Content-Type": "application/json"}, 
