@@ -13,7 +13,7 @@ export const createAccount = (newUser) => ({
   newUser
 })
 
-export const logIn = (id) => ({
+export const logIn = (user) => ({
   type: 'LOG_IN',
-  id
+  user
 })
