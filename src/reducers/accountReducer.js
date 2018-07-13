@@ -6,6 +6,8 @@ export const accountReducer = (state = {}, action) => {
       return action.user
     case 'LOG_OUT':
       return { message: action.message }
+    case 'PROMPT_CREATE':
+      return { message: action.message }
     default:
       return state
   } 

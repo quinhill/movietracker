@@ -21,4 +21,9 @@ export const logIn = (user) => ({
 export const logOut = () => ({
   type: 'LOG_OUT',
   message: 'You have been logged out'
+});
+
+export const promptCreate = () => ({
+  type: 'PROMPT_CREATE',
+  message: 'You must create an account to add favorites'
 })
