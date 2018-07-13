@@ -13,8 +13,18 @@
 
 .user-form {
   width: 200px;
+  height: 20px;
+  font-size: 15px;
+  margin: 10px 0 10px 0;
 }
 
 .create-account-button {
   width: 208px;
+  height: 20px;
+  font-size: 14px;
+  margin: 10px 0 10px 0;
+}
+
+.error-message {
+  color: rgb(255, 0, 0)
 }

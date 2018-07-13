@@ -10,7 +10,9 @@ export class CreateAccount extends Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      repeatPassword: '',
+      errorMessage: ''
     }
   }
 
@@ -23,14 +25,20 @@ export class CreateAccount extends Component {
 
   submitAccount = async (e) => {
     e.preventDefault()
-    const newUser = await addNewUser(this.state);
-    this.props.handleSubmit(newUser)
+    const { password, repeatPassword } = this.state;
+    if (password === repeatPassword) {
+      const newUser = await addNewUser(this.state);
+      this.props.handleSubmit(newUser)
+    } else {
+      const errorMessage = 'Your password does not match the repeated password'
+      this.setState({ errorMessage })
+    }
   }
 
   render() {
     return (
       <div className="new-user">
-        <h1>Create New Account Here</h1>
+        <h1>Create an account and start tracking your favorite movies!</h1>
         <form className="account-form" onSubmit={this.submitAccount}>
           <input 
             className="user-form"
@@ -56,7 +64,21 @@ export class CreateAccount extends Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <button className="create-account-button">Create Account</button>
+          <input
+            className="user-form"
+            type="password"
+            name="repeatPassword"
+            placeholder="repeat password"
+            value={this.state.repeatPassword}
+            onChange={this.handleChange}
+          />
+          <button 
+            className="create-account-button">
+            Create Account
+          </button>
+          <h4 className="error-message">
+            {this.state.errorMessage}
+          </h4>
         </form>
       </div>
     )
