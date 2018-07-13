@@ -1,11 +1,9 @@
-export const accountReducer = (state = [], action) => {
+export const accountReducer = (state = {}, action) => {
   switch(action.type) {
     case 'CREATE_ACCOUNT':
-      return [...state, {
-        name: action.name, 
-        password: action.password,
-        email: action.email
-      }]
+      return { ...action.newUser }
+    case 'LOG_IN':
+      return action.id
     default:
       return state
   } 

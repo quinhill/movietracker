@@ -19,9 +19,15 @@ export const addNewUser = async (newUserInfo) => {
   });
 
   const response = await enterAccount.json();
-  console.log(response)
-  return response;
+  return response.id;
 };
+
+export const checkForUser = async (user) => {
+  const url = 'http://localhost:3000/api/users';
+  const response = await fetch(url);
+  const userData = await response.json();
+  return userData.id;
+}
 
 export const postFavorite = async () => {
   

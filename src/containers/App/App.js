@@ -6,15 +6,11 @@ import { addNowPlaying } from '../../actions/'
 import { connect } from 'react-redux';
 import Header from '../../components/Header';
 import PropTypes from 'prop-types';
-import { Route, NavLink, Link, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { CreateAccount } from '../CreateAccount';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
 
-  
   componentDidMount = async () => {
     const movieData = await fetchNowPlaying()
     this.props.handleFetch(movieData)

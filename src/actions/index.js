@@ -3,14 +3,17 @@ export const addNowPlaying = (nowPlaying) => ({
   nowPlaying
 })
 
-export const createAccount = ({ name, password, email }) => ({
-  type: 'CREATE_ACCOUNT',
-  name,
-  password,
-  email
-})
-
 export const toggleFavorite = (id) => ({
   type: 'TOGGLE_FAVORITE',
+  id
+})
+
+export const createAccount = (newUser) => ({
+  type: 'CREATE_ACCOUNT',
+  newUser
+})
+
+export const logIn = (id) => ({
+  type: 'LOG_IN',
   id
 })
