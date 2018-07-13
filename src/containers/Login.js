@@ -12,7 +12,8 @@ export class Login extends Component {
     super()
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     }
   }
 
@@ -25,8 +26,19 @@ export class Login extends Component {
 
   submitAccount = async (e) => {
     e.preventDefault()
-    const fetchAccount = await checkForUser(this.state);
-    this.props.handleSubmit(fetchAccount)
+    const userInfo = { 
+      email: this.state.email, 
+      password: this.state.password 
+    };
+    const fetchAccount = await checkForUser(userInfo);
+    console.log(fetchAccount);
+    if(fetchAccount === undefined) {
+      this.setState({
+        errorMessage: 'Username and password did not match'
+      })
+    } else {
+      this.props.handleSubmit(fetchAccount)    
+    }
   }
 
   render() {
@@ -50,8 +62,9 @@ export class Login extends Component {
             placeholder="password"
           />
           <button className="submit-button">Log in</button>
+          <p>{this.state.errorMessage}</p>
           <NavLink className="create-account" to='/createAccount'>
-            Create Account
+            or Create Account
           </NavLink>
         </form>
       </div>
