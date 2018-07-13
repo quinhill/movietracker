@@ -48,7 +48,14 @@ export class CreateAccount extends Component {
 
   createNewUser = async () => {
     const user = await addNewUser(this.state);
-    this.props.handleSubmit(user)
+    if(user.error) {
+      const errorMessage = user.error.split('=')[1]
+      this.setState({
+        errorMessage 
+      })
+    } else {
+      this.props.handleSubmit(user)      
+    }
   }
 
   render() {
