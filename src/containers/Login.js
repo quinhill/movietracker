@@ -31,7 +31,6 @@ export class Login extends Component {
       password: this.state.password 
     };
     const fetchAccount = await checkForUser(userInfo);
-    console.log(fetchAccount);
     if(fetchAccount === undefined) {
       this.setState({
         errorMessage: 'Username and password did not match'

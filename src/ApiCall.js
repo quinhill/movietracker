@@ -47,7 +47,7 @@ export const checkForUser = async (user) => {
     return userData.data
   }
   catch(error) {
-    console.log(error)
+    return error.error
   }
 };
 
