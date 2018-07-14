@@ -33,14 +33,24 @@ export const addFavoriteKey = (movies) => {
 
 export const checkForFavorites = (nowPlaying, favorites = []) => {
   const newNowPlaying = nowPlaying.map(movie => {
-    favorites.forEach(favorite => {
-      if (movie.id === favorite.movie_id) {
-        movie.favorite = !movie.favorite
-      } else {
-        movie.favorite = false
-      }
-    })
-    return movie;
+    const foundMovie = favorites.find(favorite => favorite.movie_id == movie.id)
+    if(foundMovie) {
+      return {...movie, favorite: true}
+    }
+      return movie
   })
   return newNowPlaying;
+}
+
+export const toggleFavorite = (nowPlaying, id) => {
+  return nowPlaying.map(movie => {
+    if(movie.id === id) {
+      return {...movie, favorite: !movie.favorite}
+    }
+    return movie
+  })
+}
+
+export const updateFavorites = (nowPlaying) => {
+  return nowPlaying.filter(movie => movie.favorite)
 }

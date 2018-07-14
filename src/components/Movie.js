@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { promptCreate, makeFavorites, addNowPlaying } from '../actions';
 import { postFavorite, fetchFavorites } from '../ApiCall';
 import { removeFavorite } from '../ApiCall';
-import { checkForFavorites } from '../cleaner';
+import { toggleFavorite, updateFavorites } from '../cleaner';
 
 export const Movie = (props) => {
   
@@ -14,16 +14,21 @@ export const Movie = (props) => {
     overview, 
     poster, 
     ratings, 
-    id, 
+    id,
+    favorite 
   } = props;
 
   const handleFavorite = async (props) => {
 
     if(!props.user.name) {
       props.handlePromptCreate()
-    } else if(props.favorite) {
     } else {
-      postFavorite(props, props.user.id);
+      const updatedNowPlaying = toggleFavorite(props.nowPlaying, id);
+      props.handleFavorite(updatedNowPlaying)
+      const updatedFavorites = updateFavorites(props.nowPlaying);
+      props.resetFavorites(updatedFavorites);
+      favorite ? removeFavorite(props.user.id, id) : 
+                 postFavorite(props, props.user.id);
     }
   }
 
