@@ -20,7 +20,7 @@ export const Movie = (props) => {
   } = props;
 
   const handleFavorite = (props) => {
-    // const movie = {movie_id: id, user_id: user.id, title, poster_path: poster}
+
     if(!props.user.name) {
       props.handlePromptCreate()
     } else if(favorite) {
@@ -54,6 +54,7 @@ export const Movie = (props) => {
 }
 
 const mapStateToProps = (state) => ({
+  nowPlaying: state.nowPlaying,
   user: state.user
 });
 

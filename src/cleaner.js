@@ -30,3 +30,16 @@ export const addFavoriteKey = (movies) => {
     return {...movie, favorite: true}
   })
 }
+
+export const checkForFavorites = (nowPlaying, favorites = []) => {
+  const newNowPlaying = nowPlaying.map(movie => {
+    favorites.forEach(favorite => {
+      if (movie.id === favorite.movie_id) {
+        movie.favorite = true
+      }
+    })
+    return movie;
+  })
+  console.log(newNowPlaying)
+  return newNowPlaying;
+}

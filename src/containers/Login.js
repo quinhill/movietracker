@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { logIn } from '../actions'
+import { logIn, addNowPlaying, makeFavorites } from '../actions'
 import { checkForUser } from '../ApiCall'
 import './login.css'
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { fetchFavorites } from '../ApiCall';
-import { makeFavorites } from '../actions';
-
+import { checkForFavorites } from '../cleaner';
 
 export class Login extends Component {
   constructor() {
@@ -41,6 +40,8 @@ export class Login extends Component {
       this.props.handleSubmit(fetchAccount)
       const favorites = await fetchFavorites(fetchAccount.id);
       this.props.handleFetchFavs(favorites)
+      const newFavorites = checkForFavorites(this.props.nowPlaying, favorites)
+      this.props.handleAddFavs(newFavorites);
     }
   }
 
@@ -79,9 +80,14 @@ Login.Proptypes = {
   handleSubmit: PropTypes.func
 }
 
-export const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: (user) => dispatch(logIn(user)),
-  handleFetchFavs: (favorites) => dispatch(makeFavorites(favorites)) 
+export const mapStateToProps = (state) => ({
+  nowPlaying: state.nowPlaying
 })
 
-export default connect(null, mapDispatchToProps)(Login)
+export const mapDispatchToProps = (dispatch) => ({
+  handleSubmit: (user) => dispatch(logIn(user)),
+  handleFetchFavs: (favorites) => dispatch(makeFavorites(favorites)),
+  handleAddFavs: (newFavorites) => dispatch(addNowPlaying(newFavorites))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
