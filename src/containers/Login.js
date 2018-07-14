@@ -5,6 +5,8 @@ import { checkForUser } from '../ApiCall'
 import './login.css'
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { fetchFavorites } from '../ApiCall';
+import { makeFavorites } from '../actions';
 
 
 export class Login extends Component {
@@ -36,7 +38,9 @@ export class Login extends Component {
         errorMessage: 'Username and password did not match'
       })
     } else {
-      this.props.handleSubmit(fetchAccount)    
+      this.props.handleSubmit(fetchAccount)
+      const favorites = await fetchFavorites(fetchAccount.id);
+      this.props.handleFetchFavs(favorites)
     }
   }
 
@@ -76,7 +80,8 @@ Login.Proptypes = {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: (user) => dispatch(logIn(user))
+  handleSubmit: (user) => dispatch(logIn(user)),
+  handleFetchFavs: (favorites) => dispatch(makeFavorites(favorites)) 
 })
 
 export default connect(null, mapDispatchToProps)(Login)
