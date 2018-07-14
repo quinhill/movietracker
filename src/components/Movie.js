@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { promptCreate } from '../actions';
 import { postFavorite } from '../ApiCall';
+import { toggleFavorite } from '../actions';
+import { removeFavorite } from '../ApiCall';
 
 export const Movie = (props) => {
   
@@ -13,13 +15,16 @@ export const Movie = (props) => {
     poster, 
     ratings, 
     id, 
-    checkUser 
+    checkUser,
+    favorite 
   } = props;
 
   const handleFavorite = (props) => {
     // const movie = {movie_id: id, user_id: user.id, title, poster_path: poster}
     if(!props.user.name) {
       props.handlePromptCreate()
+    } else if(favorite) {
+      removeFavorite(id, props.user.id)
     } else {
       postFavorite(props, props.user.id);
     }
@@ -42,7 +47,7 @@ export const Movie = (props) => {
         className="add-favorite-button"
         onClick={() => handleFavorite(props)}
         value={id}
-      >add to favorites</button>
+      >favorite</button>
       </div>
     </div>
   )

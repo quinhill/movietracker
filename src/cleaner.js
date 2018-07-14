@@ -7,6 +7,7 @@ export const recentMovies = (nowPlaying) => {
       ratings: movie.vote_average,
       id: movie.id,
       releaseDate: movie.release_date,
+      favorite: false
     };
   });
 };
@@ -22,4 +23,10 @@ export const makeFavoriteMovie = (movie, userId) => {
     overview,
     vote_average: ratings
   }
+}
+
+export const addFavoriteKey = (movies) => {
+  return movies.map(movie => {
+    return {...movie, favorite: true}
+  })
 }

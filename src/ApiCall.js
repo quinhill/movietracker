@@ -1,6 +1,7 @@
 import { apiKey } from './apiKey';
 import { recentMovies } from './cleaner';
 import { makeFavoriteMovie } from './cleaner';
+import { addFavoriteKey } from './cleaner';
 
 export const fetchNowPlaying = async () => {
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
@@ -62,7 +63,6 @@ export const postFavorite = async (movie, userId) => {
   }
   const response = await fetch(url, optionsObj)
   const result = await response.json();
-  console.log(result);
   return result;
 };
 
@@ -70,5 +70,17 @@ export const fetchFavorites = async (userId) => {
   const url = `http://localhost:3000/api/users/${userId}/favorites`;
   const response = await fetch(url);
   const result = await response.json();
-  return result.data;
+  return addFavoriteKey(result.data);
+}
+
+export const removeFavorite = async (userId, movieId) => {
+  const url = `http://localhost:3000/api/users/${userId}/favorites/${movieId}`;
+  const optionsObj = {
+    method: 'DELETE',
+    headers: { "Content-Type": "application/json" },
+  }
+  const response = await fetch(url, optionsObj);
+  const result = await response.json();
+  console.log(result);
+  return result;
 }
