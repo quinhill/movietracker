@@ -63,6 +63,7 @@ export const postFavorite = async (movie, userId) => {
   }
   const response = await fetch(url, optionsObj)
   const result = await response.json();
+  console.log(result)
   return result;
 };
 
