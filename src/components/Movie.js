@@ -24,8 +24,10 @@ export const Movie = (props) => {
       props.handlePromptCreate()
     } else {
       const updatedNowPlaying = toggleFavorite(props.nowPlaying, id);
+      console.log('nowplaying list after favorite toggle', updatedNowPlaying);
       props.handleFavorite(updatedNowPlaying)
-      const updatedFavorites = updateFavorites(props.nowPlaying);
+      const updatedFavorites = updateFavorites(updatedNowPlaying);
+      console.log('result of updateFavorites function', updatedFavorites);
       props.resetFavorites(updatedFavorites);
       favorite ? removeFavorite(props.user.id, id) : 
                  postFavorite(props, props.user.id);

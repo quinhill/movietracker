@@ -38,6 +38,7 @@ export class Login extends Component {
       })
     } else {
       this.props.handleSubmit(fetchAccount)
+      console.log(fetchAccount, fetchAccount.id);
       const favorites = await fetchFavorites(fetchAccount.id);
       this.props.handleFetchFavs(favorites)
       const newFavorites = checkForFavorites(this.props.nowPlaying, favorites)
