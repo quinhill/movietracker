@@ -2,10 +2,10 @@ import React from 'react';
 import './movie.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { promptCreate } from '../actions';
-import { postFavorite } from '../ApiCall';
-import { toggleFavorite } from '../actions';
+import { promptCreate, makeFavorites, addNowPlaying } from '../actions';
+import { postFavorite, fetchFavorites } from '../ApiCall';
 import { removeFavorite } from '../ApiCall';
+import { checkForFavorites } from '../cleaner';
 
 export const Movie = (props) => {
   
@@ -15,16 +15,13 @@ export const Movie = (props) => {
     poster, 
     ratings, 
     id, 
-    checkUser,
-    favorite 
   } = props;
 
-  const handleFavorite = (props) => {
+  const handleFavorite = async (props) => {
 
     if(!props.user.name) {
       props.handlePromptCreate()
-    } else if(favorite) {
-      removeFavorite(id, props.user.id)
+    } else if(props.favorite) {
     } else {
       postFavorite(props, props.user.id);
     }
@@ -53,13 +50,16 @@ export const Movie = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   nowPlaying: state.nowPlaying,
+  favorites: state.favorites,
   user: state.user
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  handlePromptCreate : () => dispatch(promptCreate())
+export const mapDispatchToProps = (dispatch) => ({
+  handlePromptCreate : () => dispatch(promptCreate()),
+  handleFavorite: (newFavorites) => dispatch(addNowPlaying(newFavorites)),
+  resetFavorites: (favorites) => dispatch(makeFavorites(favorites))
 })
 
 

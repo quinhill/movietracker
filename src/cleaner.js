@@ -21,7 +21,7 @@ export const makeFavoriteMovie = (movie, userId) => {
     poster_path: poster, 
     release_date: releaseDate,
     overview,
-    vote_average: ratings
+    vote_average: ratings,
   }
 }
 
@@ -35,11 +35,12 @@ export const checkForFavorites = (nowPlaying, favorites = []) => {
   const newNowPlaying = nowPlaying.map(movie => {
     favorites.forEach(favorite => {
       if (movie.id === favorite.movie_id) {
-        movie.favorite = true
+        movie.favorite = !movie.favorite
+      } else {
+        movie.favorite = false
       }
     })
     return movie;
   })
-  console.log(newNowPlaying)
   return newNowPlaying;
 }
