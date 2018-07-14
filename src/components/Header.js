@@ -14,7 +14,7 @@ export const Header = (props) => {
       <button onClick={props.handleLogOut}>Log out</button>
     </div>
   } else if(props.user.message) {
-    welcome = <h3>You have been logged out</h3>
+    welcome = <h3>{props.user.message}</h3>
   }
   return (
     <div className="header">
