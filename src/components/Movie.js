@@ -16,13 +16,12 @@ export const Movie = (props) => {
     checkUser 
   } = props;
 
-  const handleFavorite = (e) => {
+  const handleFavorite = (props) => {
     // const movie = {movie_id: id, user_id: user.id, title, poster_path: poster}
-    const id = e.target.value;
     if(!props.user.name) {
       props.handlePromptCreate()
     } else {
-      postFavorite();
+      postFavorite(props, props.user.id);
     }
   }
 
@@ -41,7 +40,7 @@ export const Movie = (props) => {
       <div className="add-favorite-div">
       <button
         className="add-favorite-button"
-        onClick={handleFavorite}
+        onClick={() => handleFavorite(props)}
         value={id}
       >add to favorites</button>
       </div>

@@ -1,5 +1,6 @@
 import { apiKey } from './apiKey';
-import recentMovies from './cleaner';
+import { recentMovies } from './cleaner';
+import { makeFavoriteMovie } from './cleaner';
 
 export const fetchNowPlaying = async () => {
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
@@ -51,12 +52,13 @@ export const checkForUser = async (user) => {
   }
 };
 
-export const postFavorite = async (movie) => {
+export const postFavorite = async (movie, userId) => {
+  const favoriteMovie = makeFavoriteMovie(movie, userId)
   const url = 'http://localhost:3000/api/users/favorites/new';
   const optionsObj = {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(movie)
+    body: JSON.stringify(favoriteMovie)
   }
   const response = await fetch(url, optionsObj)
   const result = await response.json();
