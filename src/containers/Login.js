@@ -6,7 +6,7 @@ import './login.css'
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { fetchFavorites } from '../ApiCall';
-import { checkForFavorites } from '../cleaner';
+import { checkForFavorites, cleanFavorites } from '../cleaner';
 
 export class Login extends Component {
   constructor() {
@@ -31,6 +31,11 @@ export class Login extends Component {
       email: this.state.email, 
       password: this.state.password 
     };
+    this.setState({
+      email: '',
+      password: '',
+      errorMessage: ''
+    })
     const fetchAccount = await checkForUser(userInfo);
     if(fetchAccount === undefined) {
       this.setState({
@@ -38,8 +43,8 @@ export class Login extends Component {
       })
     } else {
       this.props.handleSubmit(fetchAccount)
-      console.log(fetchAccount, fetchAccount.id);
-      const favorites = await fetchFavorites(fetchAccount.id);
+      let favorites = await fetchFavorites(fetchAccount.id);
+      favorites = cleanFavorites(favorites)
       this.props.handleFetchFavs(favorites)
       const newFavorites = checkForFavorites(this.props.nowPlaying, favorites)
       this.props.handleAddFavs(newFavorites);
@@ -49,7 +54,10 @@ export class Login extends Component {
   render() {
     return (
       <div className="login">
-        <form onSubmit={this.submitAccount}>
+        <form 
+          onSubmit={this.submitAccount}
+          className="login-form"
+        >
           <input
             className="username" 
             type="email" 
@@ -67,11 +75,18 @@ export class Login extends Component {
             placeholder="password"
           />
           <button className="submit-button">Log in</button>
-          <p>{this.state.errorMessage}</p>
-          <NavLink className="create-account" to='/createAccount'>
+        </form>
+        <div className="create-account-div">
+          <p className="error-message">
+            {this.state.errorMessage}
+          </p>
+          <NavLink 
+            className="create-account" 
+            to='/createAccount'
+          >
             or Create Account
           </NavLink>
-        </form>
+        </div>
       </div>
     )
   }

@@ -4,10 +4,11 @@ import MovieList from '../MovieList';
 import { fetchNowPlaying } from '../../ApiCall';
 import { addNowPlaying } from '../../actions/'
 import { connect } from 'react-redux';
-import Header from '../../components/Header';
+import Header from '../Header';
 import PropTypes from 'prop-types';
 import { Route, withRouter } from 'react-router-dom';
 import CreateAccount from '../CreateAccount';
+import FavoritesContainer from '../FavoritesContainer';
 
 class App extends Component {
 
@@ -25,6 +26,7 @@ class App extends Component {
         </div>
         <Route exact path='/' component={MovieList} /> 
         <Route exact path='/createAccount' render={() => <CreateAccount/>} />
+        <Route exact path='/favorites' component={FavoritesContainer} />
       </div>
     );
   }

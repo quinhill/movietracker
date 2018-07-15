@@ -54,3 +54,17 @@ export const toggleFavorite = (nowPlaying, id) => {
 export const updateFavorites = (nowPlaying) => {
   return nowPlaying.filter(movie => movie.favorite)
 }
+
+export const cleanFavorites = (favorites) => {
+  return favorites.map(movie => {
+    return {
+      title: movie.title,
+      overview: movie.overview,
+      poster: movie.poster_path,
+      ratings: movie.vote_average,
+      id: movie.id,
+      releaseDate: movie.release_date,
+      favorite: movie.favorite
+    };
+  })
+}

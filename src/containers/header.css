@@ -1,0 +1,46 @@
+.header {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  grid-template-rows: 50% 50%;
+  height: 100px;
+  background-color: #00897C;
+}
+
+.title {
+  grid-column: 2/3;
+  grid-row: 1 / 3;
+  width: 460px;
+  background-image: url('../assets/movie-tracker-title.png');
+  background-repeat: no-repeat;
+}
+
+.favorites-button {
+  grid-row: 2 / 3;
+  text-decoration: none;
+  color: #ececec;
+  height: 50px;
+  width: 100px;
+}
+
+.favorites-button:hover {
+  background-color: #00554D;
+}
+
+.login {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+  height: 100%;
+}
+
+.welcome-favorites-div {
+  display: grid;
+  grid-template-rows: 50% 50%;
+}
+
+.welcome-logout-div {
+  grid-row: 1 / 2;
+  color: #ececec;
+}
+
+
+

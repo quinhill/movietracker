@@ -1,29 +1,47 @@
 import React from 'react';
 import Login from '../containers/Login';
 import './header.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from '../actions';
 
 export const Header = (props) => {
+
   let welcome;
+  let logout;
   if(props.user.name) {
     welcome =
-    <div>
-      <h3>{`Welcome ${props.user.name.split(' ')[0]}`}</h3>
-      <button onClick={props.handleLogOut}>Log out</button>
-    </div>
+      <h3 className="welcome-text">
+        {`Welcome ${props.user.name.split(' ')[0]}`}
+      </h3>;
+    logout = 
+      <button 
+      onClick={props.handleLogOut}
+      className="logout-button"
+    >
+      Log out
+    </button>
   } else if(props.user.message) {
     welcome = <h3>{props.user.message}</h3>
   }
+
   return (
     <div className="header">
-      {welcome}
-      <Link className="title" to='/'>
+      <div className="welcome-favorites-div">
+        {welcome}
+        {logout}
+        <NavLink 
+          className="navlink favorites-button"
+          to="/favorites"
+        >
+          favorites
+        </NavLink>
+      </div>
+      <NavLink className="title" to='/'>
         <div className="title">
         </div>
-      </Link>
-      <div>
+      </NavLink>
+      <div className="login">
         <Login />
       </div>
     </div>
@@ -31,7 +49,8 @@ export const Header = (props) => {
 }
 
 export const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user,
+  favorites: state.favorites
 })
 
 export const mapDispatchToProps = (dispatch) => ({

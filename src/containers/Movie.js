@@ -3,7 +3,7 @@ import './movie.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { promptCreate, makeFavorites, addNowPlaying } from '../actions';
-import { postFavorite, fetchFavorites } from '../ApiCall';
+import { postFavorite } from '../ApiCall';
 import { removeFavorite } from '../ApiCall';
 import { toggleFavorite, updateFavorites } from '../cleaner';
 
@@ -37,7 +37,7 @@ export const Movie = (props) => {
   return (
     <div className='movie'>
       <div className='title-ratings-div'>
-        <h1>{title}</h1>
+        <h1 className="movie-title">{title}</h1>
         <h4>{ratings}</h4>
       </div>
       <div className="poster-div" >

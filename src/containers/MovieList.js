@@ -1,9 +1,8 @@
 import React from 'react';
-import Movie from '../components/Movie';
+import Movie from '../containers/Movie';
 import { connect } from 'react-redux';
 import './movie-list.css';
 import PropTypes from 'prop-types';
-import { postFavorite } from '../ApiCall';
 
 export const MovieList = (props) => {
 
