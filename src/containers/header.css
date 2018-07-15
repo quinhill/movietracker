@@ -44,14 +44,14 @@
 .welcome-text {
   grid-row: 1 / 2;
   color: #ececec;
-  margin: 10px 200px 30px 0;
+  margin: 10px 150px 30px 0;
 }
 
 .button-div {
   grid-row: 2 / 3;
   display: flex;
   justify-content: flex-end;
-  padding-right: 200px;
+  padding-right: 150px;
 }
 
 
