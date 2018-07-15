@@ -1,32 +1,31 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { logIn, addNowPlaying, makeFavorites } from '../actions'
-import { checkForUser } from '../ApiCall'
-import './login.css'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { logIn, addNowPlaying, makeFavorites } from '../actions';
+import { checkForUser, fetchFavorites } from '../ApiCall';
+import './login.css';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { fetchFavorites } from '../ApiCall';
 import { checkForFavorites, cleanFavorites } from '../cleaner';
 
 export class Login extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       email: '',
       password: '',
       errorMessage: ''
-    }
+    };
   }
 
-  handleChange = (e) => {
-    const {value, name} = e.target
+  handleChange = (event) => {
+    const {value, name} = event.target;
     this.setState({
       [name]: value
-    })
+    });
   }
 
-  submitAccount = async (e) => {
-    e.preventDefault()
+  submitAccount = async (event) => {
+    event.preventDefault();
     const userInfo = { 
       email: this.state.email, 
       password: this.state.password 
@@ -35,18 +34,18 @@ export class Login extends Component {
       email: '',
       password: '',
       errorMessage: ''
-    })
+    });
     const fetchAccount = await checkForUser(userInfo);
-    if(fetchAccount === undefined) {
+    if (fetchAccount === undefined) {
       this.setState({
         errorMessage: 'Username and password did not match'
-      })
+      });
     } else {
-      this.props.handleSubmit(fetchAccount)
+      this.props.handleSubmit(fetchAccount);
       let favorites = await fetchFavorites(fetchAccount.id);
-      favorites = cleanFavorites(favorites)
-      this.props.handleFetchFavs(favorites)
-      const newFavorites = checkForFavorites(this.props.nowPlaying, favorites)
+      favorites = cleanFavorites(favorites);
+      this.props.handleFetchFavs(favorites);
+      const newFavorites = checkForFavorites(this.props.nowPlaying, favorites);
       this.props.handleAddFavs(newFavorites);
     }
   }
@@ -88,22 +87,22 @@ export class Login extends Component {
           </NavLink>
         </div>
       </div>
-    )
+    );
   }
 }
 
 Login.Proptypes = {
   handleSubmit: PropTypes.func
-}
+};
 
 export const mapStateToProps = (state) => ({
   nowPlaying: state.nowPlaying
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   handleSubmit: (user) => dispatch(logIn(user)),
   handleFetchFavs: (favorites) => dispatch(makeFavorites(favorites)),
   handleAddFavs: (newFavorites) => dispatch(addNowPlaying(newFavorites))
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

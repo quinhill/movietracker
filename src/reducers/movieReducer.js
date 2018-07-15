@@ -1,8 +1,8 @@
 export const movieReducer = (state = [], action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'ADD_NOW_PLAYING':
-      return [ ...action.nowPlaying];
+      return [...action.nowPlaying];
     default:
       return state;
   }
-}
+};

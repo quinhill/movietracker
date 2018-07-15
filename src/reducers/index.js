@@ -7,6 +7,6 @@ const rootReducer = combineReducers({
   nowPlaying: movieReducer,
   user: accountReducer,
   favorites: favoritesReducer
-})
+});
 
 export default rootReducer;

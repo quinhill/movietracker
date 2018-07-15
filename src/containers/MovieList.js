@@ -16,16 +16,16 @@ export const MovieList = (props) => {
     <div className="movie-list" >
       { mappedNowPlaying() }
     </div>
-  )
-}
+  );
+};
 
 MovieList.Proptypes = {
   nowPlaying: PropTypes.arrayOf(PropTypes)
-}
+};
 
 export const mapStateToProps = (state) => ({
   nowPlaying: state.nowPlaying,
   user: state.user
-})
+});
 
-export default connect(mapStateToProps)(MovieList)
+export default connect(mapStateToProps)(MovieList);

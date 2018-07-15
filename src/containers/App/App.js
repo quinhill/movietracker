@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import MovieList from '../MovieList';
 import { fetchNowPlaying } from '../../ApiCall';
-import { addNowPlaying } from '../../actions/'
+import { addNowPlaying } from '../../actions/';
 import { connect } from 'react-redux';
 import Header from '../Header';
 import PropTypes from 'prop-types';
@@ -13,8 +13,8 @@ import FavoritesContainer from '../FavoritesContainer';
 class App extends Component {
 
   componentDidMount = async () => {
-    const movieData = await fetchNowPlaying()
-    this.props.handleFetch(movieData)
+    const movieData = await fetchNowPlaying();
+    this.props.handleFetch(movieData);
   }
 
 
@@ -35,14 +35,14 @@ class App extends Component {
 App.Proptypes = {
   nowPlaying: PropTypes.arrayOf(PropTypes.object),
   handleFetch: PropTypes.func
-}
+};
 
 export const mapStateToProps = (state) => ({
-  nowPlaying: state.nowPlaying,
-})
+  nowPlaying: state.nowPlaying
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   handleFetch: (nowPlaying) => dispatch(addNowPlaying(nowPlaying))
-})
+});
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

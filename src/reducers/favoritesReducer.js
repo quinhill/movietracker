@@ -1,8 +1,8 @@
 export const favoritesReducer = (state = [], action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'MAKE_FAVORITES':
-      return action.favorites
+      return action.favorites;
     default:
-      return state
+      return state;
   }
-}
+};
