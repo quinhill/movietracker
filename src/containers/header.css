@@ -14,15 +14,18 @@
   background-repeat: no-repeat;
 }
 
-.favorites-button {
-  grid-row: 2 / 3;
+.navlink {
   text-decoration: none;
   color: #ececec;
   height: 50px;
   width: 100px;
 }
 
-.favorites-button:hover {
+.favorites-button {
+  grid-row: 2 / 3;
+}
+
+.navlink:hover {
   background-color: #00554D;
 }
 
@@ -33,13 +36,22 @@
 }
 
 .welcome-favorites-div {
+  height: 100px;
   display: grid;
   grid-template-rows: 50% 50%;
 }
 
-.welcome-logout-div {
+.welcome-text {
   grid-row: 1 / 2;
   color: #ececec;
+  margin: 10px 200px 30px 0;
+}
+
+.button-div {
+  grid-row: 2 / 3;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 200px;
 }
 
 

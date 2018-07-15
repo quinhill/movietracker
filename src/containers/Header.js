@@ -15,12 +15,13 @@ export const Header = (props) => {
         {`Welcome ${props.user.name.split(' ')[0]}`}
       </h3>;
     logout = 
-      <button 
-      onClick={props.handleLogOut}
-      className="logout-button"
-    >
-      Log out
-    </button>
+      <NavLink 
+        onClick={props.handleLogOut}
+        className="navlink logout-button"
+        to='/'
+      >
+        Log out
+      </NavLink>
   } else if(props.user.message) {
     welcome = <h3>{props.user.message}</h3>
   }
@@ -29,6 +30,7 @@ export const Header = (props) => {
     <div className="header">
       <div className="welcome-favorites-div">
         {welcome}
+        <div className="button-div">
         {logout}
         <NavLink 
           className="navlink favorites-button"
@@ -36,6 +38,7 @@ export const Header = (props) => {
         >
           favorites
         </NavLink>
+        </div>
       </div>
       <NavLink className="title" to='/'>
         <div className="title">
