@@ -1,10 +1,6 @@
 import React from 'react';
 import './movie.css';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { promptCreate, makeFavorites, addNowPlaying } from '../actions';
-import { postFavorite, removeFavorite } from '../ApiCall';
-import { toggleFavorite, updateFavorites } from '../cleaner';
 
 export const Movie = (props) => {
   
@@ -12,24 +8,16 @@ export const Movie = (props) => {
     title, 
     overview, 
     poster, 
-    ratings, 
+    ratings,
     id,
-    favorite 
+    handleFavorite
   } = props;
 
-  const handleFavorite = async (props) => {
-
-    if (!props.user.name) {
-      props.handlePromptCreate();
-    } else {
-      const updatedNowPlaying = toggleFavorite(props.nowPlaying, id);
-      props.handleFavorite(updatedNowPlaying);
-      const updatedFavorites = updateFavorites(updatedNowPlaying);
-      props.resetFavorites(updatedFavorites);
-      favorite ? removeFavorite(props.user.id, id) : 
-        postFavorite(props, props.user.id);
-    }
-  };
+  const toggleFavorite = (event) => {
+    const id = event.target.value;
+    console.log(id)
+    handleFavorite(id)
+  }
 
   return (
     <div className='movie'>
@@ -49,28 +37,13 @@ export const Movie = (props) => {
       <div className="add-favorite-div">
         <button
           className="add-favorite-button"
-          onClick={() => handleFavorite(props)}
+          onClick={toggleFavorite}
           value={id}
         >favorite</button>
       </div>
     </div>
   );
 };
-
-export const mapStateToProps = (state) => ({
-  nowPlaying: state.nowPlaying,
-  favorites: state.favorites,
-  user: state.user
-});
-
-export const mapDispatchToProps = (dispatch) => ({
-  handlePromptCreate : () => dispatch(promptCreate()),
-  handleFavorite: (newFavorites) => dispatch(addNowPlaying(newFavorites)),
-  resetFavorites: (favorites) => dispatch(makeFavorites(favorites))
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Movie);
 
 Movie.Proptypes = {
   title: PropTypes.string,

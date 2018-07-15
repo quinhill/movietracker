@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn, addNowPlaying, makeFavorites } from '../actions';
+import { logIn, addNowPlaying } from '../actions';
 import { checkForUser, fetchFavorites } from '../ApiCall';
 import './login.css';
 import PropTypes from 'prop-types';
@@ -101,7 +101,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   handleSubmit: (user) => dispatch(logIn(user)),
-  handleFetchFavs: (favorites) => dispatch(makeFavorites(favorites)),
+  // handleFetchFavs: (favorites) => dispatch(addFavorites(favorites)),
   handleAddFavs: (newFavorites) => dispatch(addNowPlaying(newFavorites))
 });
 

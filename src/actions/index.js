@@ -28,7 +28,3 @@ export const promptCreate = () => ({
   message: 'You must create an account to add favorites'
 });
 
-export const makeFavorites = (favorites) => ({
-  type: 'MAKE_FAVORITES',
-  favorites
-});

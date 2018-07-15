@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Movie from './Movie';
+import { Movie } from './Movie';
 import './favorites-container.css';
 import PropTypes from 'prop-types';
 
