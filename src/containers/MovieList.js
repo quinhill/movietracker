@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import { 
   toggleFavorite, 
   addUserFavorite,
-  removeUserFavorite
+  removeUserFavorite,
+  promptCreate
 } from '../actions';
 import { postFavorite, removeFavorite } from '../ApiCall';
 
@@ -23,16 +24,20 @@ export const MovieList = (props) => {
   );
 
   const handleFavorite = (id) => {
-    props.handleToggle(id)
-    const favoriteMovie = props.nowPlaying.find(movie => (
-      movie.id == id
-    ))
-    if (favoriteMovie.favorite) {
-      props.removeUserFav(favoriteMovie.id);
-      removeFavorite(props.user.id, favoriteMovie.id);
+    if(props.user.name) {
+      props.handleToggle(id)
+      const favoriteMovie = props.nowPlaying.find(movie => (
+        movie.id == id
+      ))
+      if (favoriteMovie.favorite) {
+        props.removeUserFav(favoriteMovie.id);
+        removeFavorite(props.user.id, favoriteMovie.id);
+      } else {
+        props.addUserFav(favoriteMovie);
+        postFavorite(favoriteMovie, props.user.id);
+      } 
     } else {
-      props.addUserFav(favoriteMovie);
-      postFavorite(favoriteMovie, props.user.id);
+      props.promptCreate();
     }
   }
 
@@ -56,7 +61,8 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   handleToggle: (id) => dispatch(toggleFavorite(id)),
   addUserFav: (favorite) => dispatch(addUserFavorite(favorite)),
-  removeUserFav: (id) => dispatch(removeUserFavorite(id))
+  removeUserFav: (id) => dispatch(removeUserFavorite(id)),
+  promptCreate: () => dispatch(promptCreate())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
