@@ -7,7 +7,7 @@ import { logOut } from '../actions';
 import PropTypes from 'prop-types';
 
 export const Header = (props) => {
-
+  let favorites;
   let welcome;
   let logout;
   if (props.user.name) {
@@ -23,6 +23,12 @@ export const Header = (props) => {
       >
         Log out
       </NavLink>;
+      favorites = <NavLink 
+            className="navlink favorites-button"
+            to="/favorites"
+          >
+            favorites
+          </NavLink>
   } else if (props.user.message) {
     welcome = <h3>{props.user.message}</h3>;
   }
@@ -33,12 +39,7 @@ export const Header = (props) => {
         {welcome}
         <div className="button-div">
           {logout}
-          <NavLink 
-            className="navlink favorites-button"
-            to="/favorites"
-          >
-            { props.user.name ? 'favorites' : '' }
-          </NavLink>
+          {favorites}
         </div>
       </div>
       <NavLink className="title" to='/'>
