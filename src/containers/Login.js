@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn, addNowPlaying } from '../actions';
+import { logIn, addFavorites } from '../actions';
 import { checkForUser, fetchFavorites } from '../ApiCall';
 import './login.css';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { checkForFavorites, cleanFavorites } from '../cleaner';
+import { cleanFavorites } from '../cleaner';
 
 export class Login extends Component {
   constructor() {
@@ -25,29 +25,24 @@ export class Login extends Component {
   }
 
   submitAccount = async (event) => {
-    event.preventDefault();
-    const userInfo = { 
-      email: this.state.email, 
-      password: this.state.password 
-    };
-    this.setState({
-      email: '',
-      password: '',
-      errorMessage: ''
-    });
-    const fetchAccount = await checkForUser(userInfo);
-    if (fetchAccount === undefined) {
-      this.setState({
-        errorMessage: 'Username and password did not match'
-      });
-    } else {
-      this.props.handleSubmit(fetchAccount);
-      let favorites = await fetchFavorites(fetchAccount.id);
-      favorites = cleanFavorites(favorites);
-      this.props.handleFetchFavs(favorites);
-      const newFavorites = checkForFavorites(this.props.nowPlaying, favorites);
-      this.props.handleAddFavs(newFavorites);
-    }
+    event.preventDefault()
+    const user = await checkForUser(this.state)
+    this.props.handleSubmit(user)
+    const favorites = await fetchFavorites(user.id)
+    const cleanedFavs = cleanFavorites(favorites)
+    this.mapInFavs(cleanedFavs)
+  }
+
+  mapInFavs = (favorites) => {
+    const { nowPlaying } = this.props;
+    const addedFavs = nowPlaying.map(movie => {
+      favorites.find(favorite => {
+        favorite.id == movie.id
+        return movie.favorite = true
+      })
+      return movie;
+    })
+    this.props.handleFavorites(addedFavs)
   }
 
   render() {
@@ -73,7 +68,11 @@ export class Login extends Component {
             name='password'
             placeholder="password"
           />
-          <button className="submit-button">Log in</button>
+          <button 
+            className="submit-button"
+          >
+            Log in
+          </button>
         </form>
         <div className="create-account-div">
           <p className="error-message">
@@ -96,13 +95,13 @@ Login.Proptypes = {
 };
 
 export const mapStateToProps = (state) => ({
-  nowPlaying: state.nowPlaying
+  nowPlaying: state.nowPlaying,
+  user: state.user
 });
 
 export const mapDispatchToProps = (dispatch) => ({
   handleSubmit: (user) => dispatch(logIn(user)),
-  // handleFetchFavs: (favorites) => dispatch(addFavorites(favorites)),
-  handleAddFavs: (newFavorites) => dispatch(addNowPlaying(newFavorites))
+  handleFavorites: (favorites) => dispatch(addFavorites(favorites))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

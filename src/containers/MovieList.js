@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './movie-list.css';
 import PropTypes from 'prop-types';
 import { toggleFavorite } from '../actions';
+import { postFavorite, removeFavorite } from '../ApiCall';
 
 export const MovieList = (props) => {
 
@@ -19,6 +20,14 @@ export const MovieList = (props) => {
 
   const handleFavorite = (id) => {
     props.handleToggle(id)
+    const favoriteMovie = props.nowPlaying.find(movie => (
+      movie.id == id
+    ))
+    if (favoriteMovie.favorite) {
+      postFavorite(favoriteMovie, props.user.id)
+    } else {
+      removeFavorite(props.user.id, favoriteMovie.id)
+    }
   }
 
   return (

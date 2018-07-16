@@ -15,7 +15,6 @@ export const Movie = (props) => {
 
   const toggleFavorite = (event) => {
     const id = event.target.value;
-    console.log(id)
     handleFavorite(id)
   }
 

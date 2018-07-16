@@ -12,7 +12,7 @@ export const recentMovies = (nowPlaying) => {
   });
 };
 
-export const makeFavoriteMovie = (movie, userId) => {
+export const cleanFavorite = (movie, userId) => {
   const { title, overview, poster, ratings, id, releaseDate } = movie;
   return { 
     movie_id: id, 

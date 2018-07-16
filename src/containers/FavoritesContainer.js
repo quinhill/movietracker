@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 export const FavoritesContainer = (props) => {
 
-  const mappedFavorites = props.favorites.map((favorite, index) => (
+  const mappedFavorites = props.nowPlaying.map((favorite, index) => (
     <Movie {...favorite} key={index} />
   ));
 
@@ -22,7 +22,7 @@ FavoritesContainer.Proptypes = {
 };
 
 export const mapStateToProps = (state) => ({
-  favorites: state.favorites
+  nowPlaying: state.nowPlaying
 });
 
 export default connect(mapStateToProps)(FavoritesContainer);

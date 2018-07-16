@@ -18,6 +18,11 @@ export const logIn = (user) => ({
   user
 });
 
+export const addFavorites = (favorites) => ({
+  type: 'ADD_FAVORITES',
+  favorites
+})
+
 export const logOut = () => ({
   type: 'LOG_OUT',
   message: 'You have been logged out'
