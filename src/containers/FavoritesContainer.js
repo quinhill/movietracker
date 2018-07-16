@@ -13,28 +13,27 @@ import {
 
 export const FavoritesContainer = (props) => {
 
-  let mappedFavorites;
-  if (props.user.favorites) {
-    mappedFavorites = props.user.favorites.map((favorite, index) => (
-      <Movie {...favorite} key={index} handleFavorite={handleFavorite} />
-    ));
-  } else {
-    console.log('hello')
-    return <Redirect to='/' />
-  }
-
   const handleFavorite = (id) => {
     props.handleToggle(id)
     const favoriteMovie = props.nowPlaying.find(movie => (
       movie.id == id
     ))
     if (favoriteMovie.favorite) {
+      props.removeUserFav(favoriteMovie.id);
+      removeFavorite(props.user.id, favoriteMovie.id);
+    } else {
       props.addUserFav(favoriteMovie);
       postFavorite(favoriteMovie, props.user.id);
-    } else {
-      removeFavorite(props.user.id, favoriteMovie.id);
-      props.removeUserFav(favoriteMovie.id);
     }
+  }
+  
+  let mappedFavorites;
+  if (props.user.favorites) {
+    mappedFavorites = props.user.favorites.map((favorite, index) => (
+      <Movie {...favorite} key={index} handleFavorite={handleFavorite} />
+    ));
+  } else {
+    return <Redirect to='/' />
   }
 
   return (
@@ -49,6 +48,7 @@ FavoritesContainer.Proptypes = {
 };
 
 export const mapStateToProps = (state) => ({
+  nowPlaying: state.nowPlaying,
   user: state.user
 });
 
