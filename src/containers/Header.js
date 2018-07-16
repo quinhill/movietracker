@@ -37,7 +37,7 @@ export const Header = (props) => {
             className="navlink favorites-button"
             to="/favorites"
           >
-            favorites
+            { props.user.name ? 'favorites' : '' }
           </NavLink>
         </div>
       </div>
