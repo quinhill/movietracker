@@ -33,6 +33,7 @@ export const MovieList = (props) => {
         props.removeUserFav(favoriteMovie.id);
         removeFavorite(props.user.id, favoriteMovie.id);
       } else {
+        favoriteMovie.favorite = true;
         props.addUserFav(favoriteMovie);
         postFavorite(favoriteMovie, props.user.id);
       } 

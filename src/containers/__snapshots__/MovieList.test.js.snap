@@ -25,8 +25,12 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Movie />,
-        <Movie />,
+        <Unknown
+          handleFavorite={[Function]}
+/>,
+        <Unknown
+          handleFavorite={[Function]}
+/>,
       ],
       "className": "movie-list",
     },
@@ -36,7 +40,9 @@ ShallowWrapper {
         "instance": null,
         "key": "0",
         "nodeType": "function",
-        "props": Object {},
+        "props": Object {
+          "handleFavorite": [Function],
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -45,7 +51,9 @@ ShallowWrapper {
         "instance": null,
         "key": "1",
         "nodeType": "function",
-        "props": Object {},
+        "props": Object {
+          "handleFavorite": [Function],
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -60,8 +68,12 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Movie />,
-          <Movie />,
+          <Unknown
+            handleFavorite={[Function]}
+/>,
+          <Unknown
+            handleFavorite={[Function]}
+/>,
         ],
         "className": "movie-list",
       },
@@ -71,7 +83,9 @@ ShallowWrapper {
           "instance": null,
           "key": "0",
           "nodeType": "function",
-          "props": Object {},
+          "props": Object {
+            "handleFavorite": [Function],
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],
@@ -80,7 +94,9 @@ ShallowWrapper {
           "instance": null,
           "key": "1",
           "nodeType": "function",
-          "props": Object {},
+          "props": Object {
+            "handleFavorite": [Function],
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],
