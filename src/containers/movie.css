@@ -58,3 +58,9 @@ p {
 .add-favorite-div {
   padding-top: 3px;
 }
+
+.fa-star {
+  color: orange;
+  font-size: 1.3em;
+  padding-top: 12%;
+}

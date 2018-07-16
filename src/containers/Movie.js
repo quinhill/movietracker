@@ -22,6 +22,7 @@ export const Movie = (props) => {
   return (
     <div className='movie'>
       <div className='title-ratings-div'>
+      <span>{favorite ? <i class="fas fa-star"></i> : ''}</span>
         <h1 className="movie-title">{title}</h1>
         <h4>{ratings}</h4>
       </div>
