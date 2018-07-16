@@ -23,6 +23,21 @@ export const addFavorites = (favorites) => ({
   favorites
 })
 
+export const addUserFavorite = (favorite) => ({
+  type: 'ADD_USER_FAVORITE',
+  favorite
+})
+
+export const removeUserFavorite = (id) => ({
+  type: 'REMOVE_USER_FAVORITE',
+  id
+})
+
+export const loginUserFavorites = (favorites) => ({
+  type: 'LOGIN_USER_FAVORITES',
+  favorites
+})
+
 export const logOut = () => ({
   type: 'LOG_OUT',
   message: 'You have been logged out'

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn, addFavorites } from '../actions';
+import { logIn, toggleFavorite, addUserFavorite } from '../actions';
 import { checkForUser, fetchFavorites } from '../ApiCall';
 import './login.css';
 import PropTypes from 'prop-types';
@@ -30,19 +30,20 @@ export class Login extends Component {
     this.props.handleSubmit(user)
     const favorites = await fetchFavorites(user.id)
     const cleanedFavs = cleanFavorites(favorites)
-    this.mapInFavs(cleanedFavs)
+    console.log(cleanedFavs)
+    cleanedFavs.forEach(favorite => {
+      console.log('returned and cleaned', favorite)
+      this.mapInFavs(favorite.id)})
   }
 
-  mapInFavs = (favorites) => {
-    const { nowPlaying } = this.props;
-    const addedFavs = nowPlaying.map(movie => {
-      favorites.find(favorite => {
-        favorite.id == movie.id
-        return movie.favorite = true
-      })
-      return movie;
+  mapInFavs = (id) => {
+    this.props.nowPlaying.forEach(movie => {
+      if (movie.id == id) {
+        console.log(movie)
+        this.props.handleToggle(movie.id)
+        this.props.handleLogin(movie)
+      }
     })
-    this.props.handleFavorites(addedFavs)
   }
 
   render() {
@@ -101,7 +102,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   handleSubmit: (user) => dispatch(logIn(user)),
-  handleFavorites: (favorites) => dispatch(addFavorites(favorites))
+  handleLogin: (favorite) => dispatch(addUserFavorite(favorite)),
+  handleToggle: (id) => dispatch(toggleFavorite(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

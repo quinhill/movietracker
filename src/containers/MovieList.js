@@ -3,7 +3,11 @@ import { Movie } from '../containers/Movie';
 import { connect } from 'react-redux';
 import './movie-list.css';
 import PropTypes from 'prop-types';
-import { toggleFavorite } from '../actions';
+import { 
+  toggleFavorite, 
+  addUserFavorite,
+  removeUserFavorite
+} from '../actions';
 import { postFavorite, removeFavorite } from '../ApiCall';
 
 export const MovieList = (props) => {
@@ -24,9 +28,11 @@ export const MovieList = (props) => {
       movie.id == id
     ))
     if (favoriteMovie.favorite) {
-      postFavorite(favoriteMovie, props.user.id)
+      props.removeUserFav(favoriteMovie.id);
+      removeFavorite(props.user.id, favoriteMovie.id);
     } else {
-      removeFavorite(props.user.id, favoriteMovie.id)
+      props.addUserFav(favoriteMovie);
+      postFavorite(favoriteMovie, props.user.id);
     }
   }
 
@@ -48,7 +54,9 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  handleToggle: (id) => dispatch(toggleFavorite(id))
+  handleToggle: (id) => dispatch(toggleFavorite(id)),
+  addUserFav: (favorite) => dispatch(addUserFavorite(favorite)),
+  removeUserFav: (id) => dispatch(removeUserFavorite(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
