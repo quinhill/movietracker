@@ -39,11 +39,11 @@ export const addNewUser = async (newUserInfo) => {
 
 export const checkForUser = async (user) => {
   const url = 'http://localhost:3000/api/users';
-  user.email = user.email.toLowerCase();
+  const sanitizedUser = {...user, email: user.email.toLowerCase() }
   const optionsObj = {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user)
+    body: JSON.stringify(sanitizedUser)
   }
   try {
     const response = await fetch(url, optionsObj);
