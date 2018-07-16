@@ -64,3 +64,7 @@ p {
   font-size: 1.3em;
   padding-top: 12%;
 }
+
+.no-favorites {
+  font-size: 2em;
+}

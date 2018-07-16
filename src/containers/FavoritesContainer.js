@@ -38,6 +38,11 @@ export const FavoritesContainer = (props) => {
 
   return (
     <div className="favorites-container">
+      {mappedFavorites.length ? '' : 
+        <p className="no-favorites">
+          You currently have no favorites
+        </p>
+      } 
       {mappedFavorites}
     </div>
   );

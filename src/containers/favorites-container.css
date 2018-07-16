@@ -6,3 +6,9 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.no-favorites {
+  overflow-y: visible;
+  font-size: 2em;
+  padding-top: 5%;
+}
