@@ -1,7 +1,9 @@
 import * as ApiCall from './ApiCall';
 import { apiKey } from './apiKey';
+import { recentMovies } from './cleaner';
 
 describe('fetchNowPlaying', () => {
+
 
   it('should call fetch with correct params', async () => {
     const mockArray = { results: [{}, {}] };
@@ -15,6 +17,7 @@ describe('fetchNowPlaying', () => {
   });
 
   it('should return an array of movie Objects', async () => {
+    jest.mock('./cleaner')
     const mockArray = { results: [{}, {}] };
     const expectedOutput = [{}, {}];
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve(
@@ -22,7 +25,7 @@ describe('fetchNowPlaying', () => {
       })
     );
     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
-    const result = await ApiCall.fetchNowPlaying(url);
+    const result = await ApiCall.fetchNowPlaying();
     expect(result).toEqual(expectedOutput);
   });
 });
@@ -57,3 +60,42 @@ describe('addNewUser', () => {
     expect(result.message).toEqual(expectedOutput.message);
   });
 });
+
+describe('checkForUser', () => {
+
+  it('should call fetch with correct params', () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.resolve({})
+    }));
+    const mockUser = { 
+      name: 'Kate',
+      password: 'katekate',
+      email: 'kate@kate.com'
+    }
+    const url = 'http://localhost:3000/api/users';
+    const mockOptionsObj = {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(mockUser)
+    }
+    ApiCall.checkForUser(mockUser);
+    expect(window.fetch).toHaveBeenCalledWith(url, mockOptionsObj);
+  })
+  it('should return user data if successful', async () => {
+    const url = 'http://localhost:3000/api/users';
+    const mockUser = {
+      password: 'katekate',
+      email: 'kate@kate.com'    
+    }
+    const mockOptionsObj = {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(mockUser)
+    }
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.resolve(mockUser)
+    }));
+    const result = await ApiCall.checkForUser(mockUser);
+    expect(result).toEqual(mockUser);
+  })
+})
