@@ -12,7 +12,7 @@ export const recentMovies = (nowPlaying) => {
   });
 };
 
-export const makeFavoriteMovie = (movie, userId) => {
+export const cleanFavorite = (movie, userId) => {
   const { title, overview, poster, ratings, id, releaseDate } = movie;
   return { 
     movie_id: id, 
@@ -53,4 +53,18 @@ export const toggleFavorite = (nowPlaying, id) => {
 
 export const updateFavorites = (nowPlaying) => {
   return nowPlaying.filter(movie => movie.favorite)
+}
+
+export const cleanFavorites = (favorites) => {
+  return favorites.map(movie => {
+    return {
+      title: movie.title,
+      overview: movie.overview,
+      poster: movie.poster_path,
+      ratings: movie.vote_average,
+      id: movie.movie_id,
+      releaseDate: movie.release_date,
+      favorite: movie.favorite
+    };
+  })
 }

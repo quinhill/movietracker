@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 580px;
+  height: calc(100vh - 100px);
   background-image: url('../assets/mekong-green.png')
 }
 

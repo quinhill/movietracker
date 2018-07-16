@@ -3,58 +3,61 @@ import { addNewUser } from '../ApiCall';
 import { connect } from 'react-redux';
 import { createAccount } from '../actions';
 import './create-account.css';
+import PropTypes from 'prop-types';
 
 export class CreateAccount extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       name: '',
       email: '',
       password: '',
       repeatPassword: '',
       errorMessage: ''
-    }
+    };
   }
 
-  handleChange = (e) => {
-    const { name, value } = e.target
+  handleChange = (event) => {
+    const { name, value } = event.target;
     this.setState({
       [name]: value
-    })
+    });
   }
 
-  submitAccount = (e) => {
+  submitAccount = (event) => {
     let errorMessage;
-    e.preventDefault()
+    event.preventDefault();
     const { 
       password, 
       repeatPassword, 
       name, 
       email
-     } = this.state;
+    } = this.state;
+     
     if (password !== repeatPassword) {
-      errorMessage = 'Your password does not match the repeated password'
-      this.setState({ errorMessage })
+      errorMessage = 'Your password does not match the repeated password';
+      this.setState({ errorMessage });
     } else if (name.split(' ').length < 2) {
-      errorMessage = 'Please make sure you have entered your first and last name'
-      this.setState({ errorMessage })
+      errorMessage = 
+        'Please make sure you have entered your first and last name';
+      this.setState({ errorMessage });
     } else if (!email) {
-      errorMessage = 'Please make sure you have entered your email address'
-      this.setState({errorMessage})
+      errorMessage = 'Please make sure you have entered your email address';
+      this.setState({errorMessage});
     } else {
-      this.createNewUser()
+      this.createNewUser();
     }
   }
 
   createNewUser = async () => {
     const user = await addNewUser(this.state);
-    if(user.error) {
-      const errorMessage = user.error.split('=')[1]
+    if (user.error) {
+      const errorMessage = user.error.split('=')[1];
       this.setState({
         errorMessage 
-      })
+      });
     } else {
-      this.props.handleSubmit(user)      
+      this.props.handleSubmit(user);  
     }
   }
 
@@ -104,16 +107,21 @@ export class CreateAccount extends Component {
           </h4>
         </form>
       </div>
-    )
+    );
   }
 }
 
+CreateAccount.Proptypes = {
+  user: PropTypes.object,
+  handleSubmit: PropTypes.func
+};
+
 export const mapStateToProps = (state) => ({
   user: state.user
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   handleSubmit: (user) => dispatch(createAccount(user))
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);

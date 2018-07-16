@@ -4,25 +4,28 @@
   height: 500px;
   width: 350px;
   margin: 10px;
-  color: #282828;
+  color: #ececec;
   box-shadow: 1px 1px 10px #969696;
   background-color: #00897C;
   border-radius: 5px;
 }
 
 .title-ratings-div {
+  color: #ececec;
   display: grid;
   grid-template-columns: 10% 80% 10%;
 }
 
-h1 {
+.movie-title {
+  color: #ececec;
   grid-column: 2 / 3;
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 h4 {
-  margin: 0
+  margin: 0;
+  font-size: 16px;
 }
 
 .overview {
@@ -36,7 +39,7 @@ p {
   padding-right: 60px;
   overflow-y: scroll;
   box-sizing: content-box;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 15px;
   margin: 0;
 }
@@ -54,4 +57,10 @@ p {
 
 .add-favorite-div {
   padding-top: 3px;
+}
+
+.fa-star {
+  color: orange;
+  font-size: 1.3em;
+  padding-top: 12%;
 }

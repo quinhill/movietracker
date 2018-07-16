@@ -5,8 +5,8 @@ import { shallow } from 'enzyme';
 describe('Movie', () => {
 
   it('should match snapshot', () => {
-    const wrapper = shallow(<Movie />)
+    const wrapper = shallow(<Movie />);
 
-    expect(wrapper).toMatchSnapshot()
-  })
-})
+    expect(wrapper).toMatchSnapshot();
+  });
+});

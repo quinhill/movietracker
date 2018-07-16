@@ -1,0 +1,8 @@
+.favorites-container {
+  padding-top: 20px; 
+  min-height: calc(100vh - 100px);
+  background-image: url('../assets/mekong-green.png');
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
