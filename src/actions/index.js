@@ -48,3 +48,8 @@ export const promptCreate = () => ({
   message: 'You must create an account to add favorites'
 });
 
+export const resetState = () => ({
+  type: 'RESET_STATE',
+  user: {}
+})
+

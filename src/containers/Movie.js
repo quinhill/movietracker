@@ -10,7 +10,8 @@ export const Movie = (props) => {
     poster, 
     ratings,
     id,
-    handleFavorite
+    handleFavorite,
+    favorite
   } = props;
 
   const toggleFavorite = (event) => {
@@ -38,7 +39,7 @@ export const Movie = (props) => {
           className="add-favorite-button"
           onClick={toggleFavorite}
           value={id}
-        >favorite</button>
+        >{favorite ? 'unfavorite' : 'favorite'}</button>
       </div>
     </div>
   );
