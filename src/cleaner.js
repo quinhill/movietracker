@@ -31,26 +31,6 @@ export const addFavoriteKey = (movies) => {
   })
 }
 
-export const checkForFavorites = (nowPlaying, favorites = []) => {
-  const newNowPlaying = nowPlaying.map(movie => {
-    const foundMovie = favorites.find(favorite => favorite.movie_id == movie.id)
-    if(foundMovie) {
-      return {...movie, favorite: true}
-    }
-      return movie
-  })
-  return newNowPlaying;
-}
-
-export const toggleFavorite = (nowPlaying, id) => {
-  return nowPlaying.map(movie => {
-    if(movie.id === id) {
-      return {...movie, favorite: !movie.favorite}
-    }
-    return movie
-  })
-}
-
 export const updateFavorites = (nowPlaying) => {
   return nowPlaying.filter(movie => movie.favorite)
 }
@@ -64,7 +44,7 @@ export const cleanFavorites = (favorites) => {
       ratings: movie.vote_average,
       id: movie.movie_id,
       releaseDate: movie.release_date,
-      favorite: movie.favorite
+      favorite: true
     };
   })
 }

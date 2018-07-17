@@ -19,11 +19,11 @@ describe('MovieList', () => {
   describe('mapStateToProps', () => {
     it('should return a props object with a nowPlaying array', () => {
       const mockState = {
-        nowPlaying: [{username: 'michael', password: 'password'}],
+        nowPlaying: [{username: 'Michael Scott', password: 'password'}],
         accounts: [{}, {}]
       };
       const expected = { nowPlaying:[{ 
-        username: 'michael', 
+        username: 'Michael Scott', 
         password: 'password' 
       }]
       };
