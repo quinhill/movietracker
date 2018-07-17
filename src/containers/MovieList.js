@@ -54,7 +54,6 @@ MovieList.Proptypes = {
 };
 
 export const mapStateToProps = (state) => ({
-  favorites: state.favorites,
   nowPlaying: state.nowPlaying,
   user: state.user
 });

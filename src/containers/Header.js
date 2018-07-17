@@ -7,6 +7,7 @@ import { logOut } from '../actions';
 import PropTypes from 'prop-types';
 
 export const Header = (props) => {
+  
   let favorites;
   let welcome;
   let logout;
@@ -15,20 +16,21 @@ export const Header = (props) => {
       <h3 className="welcome-text">
         {`Welcome ${props.user.name.split(' ')[0]}`}
       </h3>;
-    logout = 
-      <NavLink 
+    logout =
+      <NavLink
         onClick={props.handleLogOut}
         className="navlink logout-button"
         to='/'
       >
         Log out
       </NavLink>;
-      favorites = <NavLink 
-            className="navlink favorites-button"
-            to="/favorites"
-          >
-            favorites
-          </NavLink>
+    favorites = 
+      <NavLink
+        className="navlink favorites-button"
+        to="/favorites"
+      >
+        favorites
+      </NavLink>
   } else if (props.user.message) {
     welcome = <h3>{props.user.message}</h3>;
   }
@@ -59,7 +61,6 @@ Header.Proptypes = {
 
 export const mapStateToProps = (state) => ({
   user: state.user,
-  favorites: state.favorites
 });
 
 export const mapDispatchToProps = (dispatch) => ({

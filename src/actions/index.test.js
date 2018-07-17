@@ -95,27 +95,6 @@ describe('actions', () => {
     expect(result).toEqual(expected)
   })
 
-  it('should return a type of LOGIN_USER_FAVORITES with an array of favorites', () => {
-    const favorites = [{
-      favorite: false,
-      id: 351286,
-      overview: "Several years after the demise of Jurassic World...",
-      poster: "/c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg",
-      ratings: 6.6,
-      releaseDate: "2018-06-06",
-      title: "Jurassic World: Fallen Kingdom"
-    }]
-
-    const expected = {
-      type: 'LOGIN_USER_FAVORITES',
-      favorites
-    }
-
-    const result = actions.loginUserFavorites(favorites);
-
-    expect(result).toEqual(expected)
-  })
-
   it('should return a type of LOG_OUT with a message', () => {
     const expected = {
       type: 'LOG_OUT',

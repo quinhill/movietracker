@@ -52,7 +52,6 @@ export class CreateAccount extends Component {
   createNewUser = async () => {
     const user = await addNewUser(this.state);
     if (user.error) {
-      console.log(user)
       const errorMessage = user.error.split('=')[1];
       this.setState({
         errorMessage 

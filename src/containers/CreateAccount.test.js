@@ -1,6 +1,7 @@
-import { CreateAccount } from './CreateAccount';
+import { CreateAccount, mapStateToProps, mapDispatchToProps } from './CreateAccount';
 import React from 'react';
 import { shallow } from 'enzyme';
+import { createAccount } from '../actions';
 import * as mocks from '../__mocks__/mockCreateAccount';
 
 describe('CreateAccount', () => {
@@ -173,13 +174,11 @@ describe('CreateAccount', () => {
   describe('createNewUser', () => {
     
     let mockHandleSubmit;
-    let mockCreateNewUser
     let wrapper;
     let url;
     let optionsObj;
 
     beforeEach(() => {
-      mockCreateNewUser = jest.fn()
       mockHandleSubmit = jest.fn()
       wrapper = shallow(<CreateAccount
         handleSubmit={mockHandleSubmit}
@@ -220,6 +219,50 @@ describe('CreateAccount', () => {
       await wrapper.instance().createNewUser(wrapper.state())
 
       expect(wrapper.state('errorMessage')).toEqual(expected)
+    })
+  })
+
+  describe('mapStateToProps', () => {
+    it('should return a props object with a user object', () => {
+      const mockState = {
+        user: {
+          name: 'Michael Scott',
+          id: 4,
+          email: 'michael.scott@dundermifflin.com',
+          password: 'password'
+        },
+        nowPlaying: [{}, {}]
+      }
+      const expected = {
+        user: {
+          name: 'Michael Scott',
+          id: 4,
+          email: 'michael.scott@dundermifflin.com',
+          password: 'password'
+        }
+      }
+
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected)
+    })
+  })
+
+  describe('mapDispatchToProps', () => {
+
+    it('should call dispatch when using a function from MDTP', () => {
+      const mockDispatch = jest.fn();
+      const mockUser = {
+        name: 'Michael Scott',
+        id: 4,
+        email: 'michael.scott@dundermifflin.com',
+        password: 'password'
+      }
+      const actionToDispatch = createAccount(mockUser)
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.handleSubmit(mockUser)
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })
   })
 })
