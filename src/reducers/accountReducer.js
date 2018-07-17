@@ -21,10 +21,7 @@ export const accountReducer = (state = {}, action) => {
           favorite.id != action.id
         ));
       }
-      console.log(newFavorites)
-      return {...state, favorites: newFavorites} 
-    case 'LOGIN_USER_FAVORITES':
-      return {...state, favorites: [...action.favorites]};
+      return {...state, favorites: newFavorites}
     default:
       return state;
   } 

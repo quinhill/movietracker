@@ -30,9 +30,7 @@ export class Login extends Component {
     this.props.handleSubmit(user)
     const favorites = await fetchFavorites(user.id)
     const cleanedFavs = cleanFavorites(favorites)
-    console.log(cleanedFavs)
     cleanedFavs.forEach(favorite => {
-      console.log('returned and cleaned', favorite)
       this.mapInFavs(favorite.id)})
   }
 
