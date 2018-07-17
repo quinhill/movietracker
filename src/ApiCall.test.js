@@ -129,13 +129,47 @@ describe('postFavorite', () => {
       title: 'so fake',
       overview: 'fake af'
     }
+    const mockUserId = 5;
     const optionsObj = {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(cleanFavorite(mockMovie, 5))
     }
     const url = 'http://localhost:3000/api/users/favorites/new';
-    ApiCall.postFavorite(mockMovie, 5);
+    ApiCall.postFavorite(mockMovie, mockUserId);
     expect(window.fetch).toHaveBeenCalledWith(url, optionsObj)
   })
+
+  it('should return a success message when posted successfully', async () => {
+    const mockMovie = {
+      title: 'so fake',
+      overview: 'fake af'
+    };
+    const mockUserId = 7;
+    const successMessage = {status: "success", message: "Movie was added to favorites", id: 99}
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.resolve(successMessage)
+    }));
+    const result = await ApiCall.postFavorite(mockMovie, mockUserId);
+    expect(result).toEqual(successMessage);
+  })
+})
+
+describe('removeFavorite', () => {
+
+  it('should call fetch with the correct params', () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.resolve({})
+    }));
+    const movieId = 343453;
+    const userId = 7;
+    const url = `http://localhost:3000/api/users/${userId}/favorites/${movieId}`;
+    const mockOptionsObj = {
+      method: 'DELETE',
+      headers: { "Content-Type": "application/json" },
+    };
+    ApiCall.removeFavorite(userId, movieId);
+    expect(window.fetch).toHaveBeenCalledWith(url, mockOptionsObj);
+  });
+
 })
