@@ -33,11 +33,6 @@ export const removeUserFavorite = (id) => ({
   id
 })
 
-export const loginUserFavorites = (favorites) => ({
-  type: 'LOGIN_USER_FAVORITES',
-  favorites
-})
-
 export const logOut = () => ({
   type: 'LOG_OUT',
   message: 'You have been logged out'
