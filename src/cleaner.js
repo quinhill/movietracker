@@ -31,10 +31,6 @@ export const addFavoriteKey = (movies) => {
   })
 }
 
-export const updateFavorites = (nowPlaying) => {
-  return nowPlaying.filter(movie => movie.favorite)
-}
-
 export const cleanFavorites = (favorites) => {
   return favorites.map(movie => {
     return {
