@@ -102,6 +102,7 @@ describe('checkForUser', () => {
       password: 'katekate',
       email: 'kate@kate.com',
       data: {
+        id: 5,
         password: 'katekate',
         email: 'kate@kate.com'     
       }
