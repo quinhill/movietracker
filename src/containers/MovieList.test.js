@@ -56,13 +56,13 @@ describe('MovieList', () => {
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     })
 
-    it('should call dispatch when using addUserFav from MDTP', () => {
+    it('should call dispatch when using handleAddFav from MDTP', () => {
       const mockDispatch = jest.fn();
       const mockFavorite = { title: 'Teeth', id: 4}
       const actionToDispatch = addUserFavorite(mockFavorite);
 
       const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.addUserFav(mockFavorite);
+      mappedProps.handleAddFav(mockFavorite);
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })
 
@@ -71,7 +71,7 @@ describe('MovieList', () => {
       const actionToDispatch = removeUserFavorite(4)
 
       const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.removeUserFav(4)
+      mappedProps.handleRemoveFav(4)
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })
 
