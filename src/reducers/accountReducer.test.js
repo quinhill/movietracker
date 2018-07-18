@@ -81,17 +81,14 @@ describe('accountReducer', () => {
     expect(result).toEqual(expected);
   })
 
-  it.skip('should return the state and remove a favorite from the users favorites array', () => {
-    const favorite1 = { id: 4 }
-    const favorite2 = { id: 5 }
-
-    accountReducer(undefined, actions.addUserFavorite(favorite1))
-    accountReducer(undefined, actions.addUserFavorite(favorite2))
-
-    const expected = {favorites: [favorite2]}
-
-    const result = accountReducer(undefined, actions.removeUserFavorite(4));
-
+  it('REMOVE USER FAVORITE return the state and remove a favorite from the users favorites array', () => {
+    const state = { favorites: [{ id: 5, favorite: true }, { id: 6, favorite: true}]};
+    const action = {
+      type: 'REMOVE_USER_FAVORITE',
+      id: 5
+    }
+    const expected = { ...state, favorites: [{ id: 6, favorite: true}] };
+    const result = accountReducer(state, action);
     expect(result).toEqual(expected);
   })
 })
