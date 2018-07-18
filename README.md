@@ -5,11 +5,11 @@
 
 MovieTracker is an app that allows users to see what is currently playing and add movies they would like to see to their favorites. 
 
-For this project, we made a fetch call to receive the data from an API hosted by www.themoviedb.org. 
+For this project, we made a fetch call to receive the data of currently playing movies from an API hosted by www.themoviedb.org. 
 
 Although the app is on too low a scale to require it, we used this project to familiarize ourselves with React-Redux, also implementing React-Router for the first time.
 
-MovieTracker works with a locally hosted backend, to allow for users to create an account and store favorites. This data is then retrievable on sign in.
+MovieTracker works with a locally hosted backend, to allow for users to create an account and store/remove their favorites. This data is then retrievable on sign in.
 
 ### Requirements to Run MovieTracker
 
