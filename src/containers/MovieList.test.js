@@ -21,58 +21,67 @@ describe('MovieList', () => {
   });
 
   describe('mapStateToProps', () => {
-    it('should return a props object with a nowPlaying array', () => {
+    it('should return a props object with a user object', () => {
       const mockState = {
-        nowPlaying: [{username: 'Michael Scott', password: 'password'}],
-        accounts: [{}, {}]
-      };
-      const expected = { nowPlaying:[{ 
-        username: 'Michael Scott', 
-        password: 'password' 
-      }]
-      };
-
+        user: {
+          name: 'Michael Scott',
+          id: 4,
+          email: 'michael.scott@dundermifflin.com',
+          password: 'password'
+        },
+        nowPlaying: [{}, {}]
+      }
+      const expected = {
+        user: {
+          name: 'Michael Scott',
+          id: 4,
+          email: 'michael.scott@dundermifflin.com',
+          password: 'password'
+        },
+        nowPlaying: [{}, {}]
+      }
       const mappedProps = mapStateToProps(mockState);
-
       expect(mappedProps).toEqual(expected);
     });
   });
 
   describe('mapDispatchToProps', () => {
-    let mockDispatch;
-    let mappedProps;
-    beforeEach(() => {
-      mockDispatch = jest.fn();
-      mappedProps = mapDispatchToProps(mockDispatch);
-    })
-    it('should call dispatch with correct params when handle toggle is called', () => {
-      const movieId = 564;
-      const actionToDispatch = toggleFavorite(movieId)
-      mappedProps.handleToggle(movieId);
+
+    it('should call dispatch when using handleToggle from MDTP', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = toggleFavorite(4);
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.handleToggle(4);
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     })
 
-    it('should call dispatch with correct params when handleAddFav is called', () => {
-      const mockFavoriteMovie = { 
-        title: 'favorites',
-        overview: 'everyone has them'
-      }
-      const actionToDispatch = addUserFavorite(mockFavoriteMovie);
-      mappedProps.handleAddFav(mockFavoriteMovie);
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    it('should call dispatch when using addUserFav from MDTP', () => {
+      const mockDispatch = jest.fn();
+      const mockFavorite = { title: 'Teeth', id: 4}
+      const actionToDispatch = addUserFavorite(mockFavorite);
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.addUserFav(mockFavorite);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })
 
-    it('should call dispatch with correct params when removeUserFavs is called', () => {
-      const mockMovieId = 453;
-      const actionToDispatch = removeUserFavorite(mockMovieId);
-      mappedProps.handleRemoveFav(mockMovieId);
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    it('should call dispatch when using removeUserFav from MDTP', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = removeUserFavorite(4)
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.removeUserFav(4)
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })
 
-    it('should call dispatch with correct params when promptCreate is called', () => {
-      const actionToDispatch = promptCreate();
-      mappedProps.promptCreate();
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    it('should call dispatch when using promptCreate from MDTP', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = promptCreate()
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.promptCreate()
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })
   })
 });

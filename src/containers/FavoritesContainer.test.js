@@ -1,25 +1,23 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-<<<<<<< HEAD
-import { Header } from './Header';
+import { FavoritesContainer, mapStateToProps, mapDispatchToProps } from './FavoritesContainer';
+import { toggleFavorite } from '../actions';
 
-describe('Header', () => {
 
-  it('should match snapshot upon initial render', () => {
-    const wrapper = shallow(<Header />);
+describe('FavoritesContainer', () => {
 
-    expect(wrapper).toMatchSnapshot();
-import { Header, mapStateToProps, mapDispatchToProps } from './Header';
-import { logOut } from '../actions';
+  let wrapper;
+  let mockUser;
 
-describe('Header', () => {
+  beforeEach(() => {
+    mockUser = {id: 4, favorites: [{id: 1}, {id: 3}]}
 
-  it('should match snapshot', () => {
-    const mockUser = {name: 'Michael Scott'}
-    const wrapper = shallow(<Header 
+    wrapper = shallow(<FavoritesContainer 
       user={mockUser}
       />)
+  })
 
+  it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
@@ -27,8 +25,8 @@ describe('Header', () => {
     it('should return a props object with a user object', () => {
       const mockState = {
         user: {
-          name: 'Michael Scott', 
-          id: 4, 
+          name: 'Michael Scott',
+          id: 4,
           email: 'michael.scott@dundermifflin.com',
           password: 'password'
         },
@@ -40,7 +38,8 @@ describe('Header', () => {
           id: 4,
           email: 'michael.scott@dundermifflin.com',
           password: 'password'
-        }
+        },
+        nowPlaying: [{}, {}]
       }
 
       const mappedProps = mapStateToProps(mockState);
@@ -53,10 +52,10 @@ describe('Header', () => {
 
     it('should call dispatch when using a function from MDTP', () => {
       const mockDispatch = jest.fn();
-      const actionToDispatch = logOut()
-  
+      const actionToDispatch = toggleFavorite()
+
       const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.handleLogOut()
+      mappedProps.handleToggle()
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })
   })
