@@ -1,5 +1,5 @@
 import React from 'react';
-import { Movie } from '../containers/Movie';
+import { Movie } from '../components/Movie';
 import { connect } from 'react-redux';
 import './movie-list.css';
 import PropTypes from 'prop-types';
@@ -24,11 +24,11 @@ export const MovieList = (props) => {
   );
 
   const handleFavorite = (id) => {
-    if(props.user.name) {
-      props.handleToggle(id)
+    if (props.user.name) {
+      props.handleToggle(id);
       const favoriteMovie = props.nowPlaying.find(movie => (
         movie.id == id
-      ))
+      ));
       if (favoriteMovie.favorite) {
         props.handleRemoveFav(favoriteMovie.id);
         removeFavorite(props.user.id, favoriteMovie.id);
@@ -40,7 +40,7 @@ export const MovieList = (props) => {
     } else {
       props.promptCreate();
     }
-  }
+  };
 
   return (
     <div className="movie-list" >
@@ -49,8 +49,13 @@ export const MovieList = (props) => {
   );
 };
 
-MovieList.Proptypes = {
-  nowPlaying: PropTypes.arrayOf(PropTypes)
+MovieList.propTypes = {
+  nowPlaying: PropTypes.arrayOf(PropTypes),
+  user: PropTypes.object,
+  handleToggle: PropTypes.func,
+  handleAddFav: PropTypes.func,
+  handleRemoveFav: PropTypes.func,
+  promptCreate: PropTypes.func
 };
 
 export const mapStateToProps = (state) => ({
@@ -63,6 +68,6 @@ export const mapDispatchToProps = (dispatch) => ({
   handleAddFav: (favorite) => dispatch(addUserFavorite(favorite)),
   handleRemoveFav: (id) => dispatch(removeUserFavorite(id)),
   promptCreate: () => dispatch(promptCreate())
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieList);

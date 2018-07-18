@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Movie } from './Movie';
+import { Movie } from '../components/Movie';
 import './favorites-container.css';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
@@ -14,10 +14,10 @@ import {
 export const FavoritesContainer = (props) => {
 
   const handleFavorite = (id) => {
-    props.handleToggle(id)
+    props.handleToggle(id);
     const favoriteMovie = props.nowPlaying.find(movie => (
       movie.id == id
-    ))
+    ));
     if (favoriteMovie.favorite) {
       props.removeUserFav(favoriteMovie.id);
       removeFavorite(props.user.id, favoriteMovie.id);
@@ -25,7 +25,7 @@ export const FavoritesContainer = (props) => {
       props.addUserFav(favoriteMovie);
       postFavorite(favoriteMovie, props.user.id);
     }
-  }
+  };
   
   let mappedFavorites;
   if (props.user.favorites) {
@@ -33,7 +33,7 @@ export const FavoritesContainer = (props) => {
       <Movie {...favorite} key={index} handleFavorite={handleFavorite} />
     ));
   } else {
-    return <Redirect to='/' />
+    return <Redirect to='/' />;
   }
 
   return (
@@ -48,8 +48,12 @@ export const FavoritesContainer = (props) => {
   );
 };
 
-FavoritesContainer.Proptypes = {
-  favorites: PropTypes.array
+FavoritesContainer.propTypes = {
+  nowPlaying: PropTypes.arrayOf(PropTypes.object),
+  user: PropTypes.object,
+  handleToggle: PropTypes.func,
+  addUserFav: PropTypes.func,
+  removeUserFav: PropTypes.func
 };
 
 export const mapStateToProps = (state) => ({
@@ -61,6 +65,6 @@ export const mapDispatchToProps = (dispatch) => ({
   handleToggle: (id) => dispatch(toggleFavorite(id)),
   addUserFav: (favorite) => dispatch(addUserFavorite(favorite)),
   removeUserFav: (favorite) => dispatch(removeUserFavorite(favorite))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoritesContainer);

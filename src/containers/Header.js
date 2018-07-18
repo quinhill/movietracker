@@ -30,7 +30,7 @@ export const Header = (props) => {
         to="/favorites"
       >
         favorites
-      </NavLink>
+      </NavLink>;
   } else if (props.user.message) {
     welcome = <h3>{props.user.message}</h3>;
   }
@@ -55,12 +55,13 @@ export const Header = (props) => {
   );
 };
 
-Header.Proptypes = {
-  user: PropTypes.object
+Header.propTypes = {
+  user: PropTypes.object,
+  handleLogOut: PropTypes.func
 };
 
 export const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user
 });
 
 export const mapDispatchToProps = (dispatch) => ({

@@ -12,16 +12,16 @@ export const accountReducer = (state = {}, action) => {
       if (state.favorites) {
         return {...state, favorites: [...state.favorites, action.favorite]};
       } else {
-        return {...state, favorites: [action.favorite]}
+        return {...state, favorites: [action.favorite]};
       }
     case 'REMOVE_USER_FAVORITE':
-    let newFavorites;
+      let newFavorites;
       if (state.favorites) {
         newFavorites = state.favorites.filter(favorite => (
           favorite.id != action.id
         ));
       }
-      return {...state, favorites: newFavorites}
+      return {...state, favorites: newFavorites};
     default:
       return state;
   } 

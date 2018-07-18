@@ -5,10 +5,10 @@ export const movieReducer = (state = [], action) => {
     case 'TOGGLE_FAVORITE':
       return state.map(movie => {
         if (movie.id == action.id) {
-          movie = {...movie, favorite: !movie.favorite}
+          movie = {...movie, favorite: !movie.favorite};
         } 
         return movie;
-      })
+      });
     default:
       return state;
   }

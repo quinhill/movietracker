@@ -25,22 +25,23 @@ export class Login extends Component {
   }
 
   submitAccount = async (event) => {
-    event.preventDefault()
-    const user = await checkForUser(this.state)
-    this.props.handleSubmit(user)
-    const favorites = await fetchFavorites(user.id)
-    const cleanedFavs = cleanFavorites(favorites)
+    event.preventDefault();
+    const user = await checkForUser(this.state);
+    this.props.handleSubmit(user);
+    const favorites = await fetchFavorites(user.id);
+    const cleanedFavs = cleanFavorites(favorites);
     cleanedFavs.forEach(favorite => {
-      this.mapInFavs(favorite.id)})
+      this.mapInFavs(favorite.id);
+    });
   }
 
   mapInFavs = (id) => {
     this.props.nowPlaying.forEach(movie => {
       if (movie.id == id) {
-        this.props.handleToggle(movie.id)
-        this.props.handleLogin(movie)
+        this.props.handleToggle(movie.id);
+        this.props.handleLogin(movie);
       }
-    })
+    });
   }
 
   render() {
@@ -88,8 +89,12 @@ export class Login extends Component {
   }
 }
 
-Login.Proptypes = {
-  handleSubmit: PropTypes.func
+Login.propTypes = {
+  nowPlaying: PropTypes.arrayOf(PropTypes.object),
+  user: PropTypes.object,
+  handleSubmit: PropTypes.func,
+  handleLogin: PropTypes.func,
+  handleToggle: PropTypes.func
 };
 
 export const mapStateToProps = (state) => ({

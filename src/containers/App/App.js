@@ -32,7 +32,7 @@ export class App extends Component {
   }
 }
 
-App.Proptypes = {
+App.propTypes = {
   nowPlaying: PropTypes.arrayOf(PropTypes.object),
   handleFetch: PropTypes.func
 };

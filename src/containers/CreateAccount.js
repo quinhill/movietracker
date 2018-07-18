@@ -111,7 +111,7 @@ export class CreateAccount extends Component {
   }
 }
 
-CreateAccount.Proptypes = {
+CreateAccount.propTypes = {
   user: PropTypes.object,
   handleSubmit: PropTypes.func
 };

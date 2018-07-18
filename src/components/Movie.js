@@ -16,13 +16,13 @@ export const Movie = (props) => {
 
   const toggleFavorite = (event) => {
     const id = event.target.value;
-    handleFavorite(id)
-  }
+    handleFavorite(id);
+  };
 
   return (
     <div className='movie'>
       <div className='title-ratings-div'>
-      <span>{favorite ? <i className="fas fa-star"></i> : ''}</span>
+        <span>{favorite ? <i className="fas fa-star"></i> : ''}</span>
         <h1 className="movie-title">{title}</h1>
         <h4>{ratings}</h4>
       </div>
@@ -46,9 +46,12 @@ export const Movie = (props) => {
   );
 };
 
-Movie.Proptypes = {
+Movie.propTypes = {
+  id: PropTypes.number,
+  favorite: PropTypes.bool,
   title: PropTypes.string,
   overview: PropTypes.string,
   poster: PropTypes.string,
-  ratings: PropTypes.string
+  ratings: PropTypes.string,
+  handleFavorite: PropTypes.func,
 };

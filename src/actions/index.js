@@ -21,17 +21,17 @@ export const logIn = (user) => ({
 export const addFavorites = (favorites) => ({
   type: 'ADD_FAVORITES',
   favorites
-})
+});
 
 export const addUserFavorite = (favorite) => ({
   type: 'ADD_USER_FAVORITE',
   favorite
-})
+});
 
 export const removeUserFavorite = (id) => ({
   type: 'REMOVE_USER_FAVORITE',
   id
-})
+});
 
 export const logOut = () => ({
   type: 'LOG_OUT',
@@ -46,5 +46,5 @@ export const promptCreate = () => ({
 export const resetState = () => ({
   type: 'RESET_STATE',
   user: {}
-})
+});
 
