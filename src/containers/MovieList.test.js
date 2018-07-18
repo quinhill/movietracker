@@ -73,7 +73,7 @@ describe('MovieList', () => {
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.handleRemoveFav(4)
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-    })
+    });
 
     it('should call dispatch when using promptCreate from MDTP', () => {
       const mockDispatch = jest.fn();
@@ -82,6 +82,6 @@ describe('MovieList', () => {
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.promptCreate()
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-    })
-  })
+    });
+  });
 });

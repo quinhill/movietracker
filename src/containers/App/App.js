@@ -10,7 +10,7 @@ import { Route, withRouter } from 'react-router-dom';
 import CreateAccount from '../CreateAccount';
 import FavoritesContainer from '../FavoritesContainer';
 
-class App extends Component {
+export class App extends Component {
 
   componentDidMount = async () => {
     const movieData = await fetchNowPlaying();
