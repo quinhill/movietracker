@@ -16,7 +16,9 @@ ShallowWrapper {
           }
     }
 >
-    <withRouter(Connect(App)) />
+    <withRouter(Connect(App))
+        handleFetch={[Function]}
+    />
 </Provider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -29,7 +31,9 @@ ShallowWrapper {
     "instance": null,
     "key": undefined,
     "nodeType": "function",
-    "props": Object {},
+    "props": Object {
+      "handleFetch": [Function],
+    },
     "ref": null,
     "rendered": null,
     "type": [Function],
@@ -39,7 +43,9 @@ ShallowWrapper {
       "instance": null,
       "key": undefined,
       "nodeType": "function",
-      "props": Object {},
+      "props": Object {
+        "handleFetch": [Function],
+      },
       "ref": null,
       "rendered": null,
       "type": [Function],
