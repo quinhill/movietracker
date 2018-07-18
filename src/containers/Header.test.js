@@ -1,14 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-<<<<<<< HEAD
-import { Header } from './Header';
-
-describe('Header', () => {
-
-  it('should match snapshot upon initial render', () => {
-    const wrapper = shallow(<Header />);
-
-    expect(wrapper).toMatchSnapshot();
 import { Header, mapStateToProps, mapDispatchToProps } from './Header';
 import { logOut } from '../actions';
 
@@ -19,7 +10,6 @@ describe('Header', () => {
     const wrapper = shallow(<Header 
       user={mockUser}
       />)
-
     expect(wrapper).toMatchSnapshot()
   })
 
@@ -42,9 +32,7 @@ describe('Header', () => {
           password: 'password'
         }
       }
-
       const mappedProps = mapStateToProps(mockState);
-
       expect(mappedProps).toEqual(expected)
     })
   })
@@ -53,8 +41,7 @@ describe('Header', () => {
 
     it('should call dispatch when using a function from MDTP', () => {
       const mockDispatch = jest.fn();
-      const actionToDispatch = logOut()
-  
+      const actionToDispatch = logOut()  
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.handleLogOut()
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
