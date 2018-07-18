@@ -27,7 +27,7 @@ export const MovieList = (props) => {
     if (props.user.name) {
       props.handleToggle(id);
       const favoriteMovie = props.nowPlaying.find(movie => (
-        movie.id == id
+        parseInt(movie.id) === parseInt(id)
       ));
       if (favoriteMovie.favorite) {
         props.handleRemoveFav(favoriteMovie.id);

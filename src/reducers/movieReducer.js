@@ -4,7 +4,7 @@ export const movieReducer = (state = [], action) => {
       return [...action.nowPlaying];
     case 'TOGGLE_FAVORITE':
       return state.map(movie => {
-        if (movie.id == action.id) {
+        if (parseInt(movie.id) === parseInt(action.id)) {
           movie = {...movie, favorite: !movie.favorite};
         } 
         return movie;

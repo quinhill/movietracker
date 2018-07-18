@@ -53,5 +53,5 @@ Movie.propTypes = {
   overview: PropTypes.string,
   poster: PropTypes.string,
   ratings: PropTypes.string,
-  handleFavorite: PropTypes.func,
+  handleFavorite: PropTypes.func
 };

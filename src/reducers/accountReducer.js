@@ -18,7 +18,7 @@ export const accountReducer = (state = {}, action) => {
       let newFavorites;
       if (state.favorites) {
         newFavorites = state.favorites.filter(favorite => (
-          favorite.id != action.id
+          parseInt(favorite.id) !== parseInt(action.id)
         ));
       }
       return {...state, favorites: newFavorites};

@@ -37,7 +37,7 @@ export class Login extends Component {
 
   mapInFavs = (id) => {
     this.props.nowPlaying.forEach(movie => {
-      if (movie.id == id) {
+      if (parseInt(movie.id) === parseInt(id)) {
         this.props.handleToggle(movie.id);
         this.props.handleLogin(movie);
       }
