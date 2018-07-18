@@ -1,8 +1,11 @@
 import React from 'react';
 import App from './App';
-import { shallow } from 'enzyme';
+import { mapDispatchToProps } from './App';
+import { shallow, mount } from 'enzyme';
+import { fetchNowPlaying } from '../../ApiCall';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('App', () => {
   let store;

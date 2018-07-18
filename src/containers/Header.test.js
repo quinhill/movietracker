@@ -10,7 +10,6 @@ describe('Header', () => {
     const wrapper = shallow(<Header 
       user={mockUser}
       />)
-
     expect(wrapper).toMatchSnapshot()
   })
 
@@ -33,9 +32,7 @@ describe('Header', () => {
           password: 'password'
         }
       }
-
       const mappedProps = mapStateToProps(mockState);
-
       expect(mappedProps).toEqual(expected)
     })
   })
@@ -44,8 +41,7 @@ describe('Header', () => {
 
     it('should call dispatch when using a function from MDTP', () => {
       const mockDispatch = jest.fn();
-      const actionToDispatch = logOut()
-  
+      const actionToDispatch = logOut()  
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.handleLogOut()
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)

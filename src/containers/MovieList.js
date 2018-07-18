@@ -30,11 +30,11 @@ export const MovieList = (props) => {
         movie.id == id
       ))
       if (favoriteMovie.favorite) {
-        props.removeUserFav(favoriteMovie.id);
+        props.handleRemoveFav(favoriteMovie.id);
         removeFavorite(props.user.id, favoriteMovie.id);
       } else {
         favoriteMovie.favorite = true;
-        props.addUserFav(favoriteMovie);
+        props.handleAddFav(favoriteMovie);
         postFavorite(favoriteMovie, props.user.id);
       } 
     } else {
@@ -60,8 +60,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   handleToggle: (id) => dispatch(toggleFavorite(id)),
-  addUserFav: (favorite) => dispatch(addUserFavorite(favorite)),
-  removeUserFav: (id) => dispatch(removeUserFavorite(id)),
+  handleAddFav: (favorite) => dispatch(addUserFavorite(favorite)),
+  handleRemoveFav: (id) => dispatch(removeUserFavorite(id)),
   promptCreate: () => dispatch(promptCreate())
 })
 

@@ -21,12 +21,15 @@ describe('movieReducer', () => {
     expect(result).toEqual(expected)
   })
 
-  it.skip('should return state and toggle the favorites value of a movie', () => {
-    const nowPlaying = [{favorite: false}, {favorite: false}, {favorite: false}];
+  it('should return state and toggle the favorites value of a movie', () => {
+    const state = [{ id: 5, favorite: false}, { id: 7, favorite: false}, {favorite: false}]
+    const action = {
+      type: 'TOGGLE_FAVORITE',
+      id: 5
+    }
+    const expected = [{ id: 5, favorite: true}, { id: 7, favorite: false}, {favorite: false}]
 
-    const expected = nowPlaying;
-
-    const result = movieReducer(undefined, actions.addNowPlaying(nowPlaying))
+    const result = movieReducer(state, action)
 
     expect(result).toEqual(expected)
   })
