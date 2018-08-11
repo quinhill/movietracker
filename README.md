@@ -17,4 +17,8 @@ MovieTracker works with a locally hosted backend, to allow for users to create a
 - Follow the instructions in the backend repository's ReadMe on how to start up the backend, including setting up Postgress.
 - Once the backend is running, `cd` back into this repository and run `npm install` and `npm start`.
 
+Authors:
+* Arram Mandel - https://github.com/airum82
+* Quinlan Hill - https://github.com/quinhill
+
 Enjoy!
