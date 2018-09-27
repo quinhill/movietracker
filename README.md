@@ -8,7 +8,7 @@ Movie-Tracker is an app that allows users to:
 * Create an account
 * Add/remove movies to their favorites
 
-![Movie-Tracker](https://imgur.com/2v7uQ6c)
+![](https://imgur.com/2v7uQ6c)
 
 ### Installing
 
