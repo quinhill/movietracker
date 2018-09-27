@@ -8,6 +8,8 @@ Movie-Tracker is an app that allows users to:
 * Create an account
 * Add/remove movies to their favorites
 
+![Movie-Tracker](https://imgur.com/a/mZMPiLp)
+
 ### Installing
 
 To run MovieTracker on your machine, you will need to clone down this repository as well as the backend repository, which can be found here: https://github.com/turingschool-examples/movie-tracker
