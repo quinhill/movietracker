@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import MovieList from '../MovieList';
-import { fetchNowPlaying } from '../../ApiCall';
-import { addNowPlaying } from '../../actions/';
+import MovieList from '../MovieList/MovieList';
+import { fetchNowPlaying } from '../../thunks/ApiCall';
+import { addNowPlaying } from '../../actions';
 import { connect } from 'react-redux';
-import Header from '../Header';
+import Header from '../Header/Header';
 import PropTypes from 'prop-types';
 import { Route, withRouter } from 'react-router-dom';
-import CreateAccount from '../CreateAccount';
-import FavoritesContainer from '../FavoritesContainer';
+import CreateAccount from '../CreateAccount/CreateAccount';
+import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
 
 export class App extends Component {
 

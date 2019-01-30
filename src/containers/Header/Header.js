@@ -1,9 +1,9 @@
 import React from 'react';
-import Login from '../containers/Login';
+import Login from '../Login/Login';
 import './header.css';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logOut } from '../actions';
+import { logOut } from '../../actions';
 import PropTypes from 'prop-types';
 
 export const Header = (props) => {

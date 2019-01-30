@@ -1,5 +1,5 @@
 import React from 'react';
-import { Movie } from '../components/Movie';
+import { Movie } from '../../components/Movie';
 import { connect } from 'react-redux';
 import './movie-list.css';
 import PropTypes from 'prop-types';
@@ -8,8 +8,8 @@ import {
   addUserFavorite,
   removeUserFavorite,
   promptCreate
-} from '../actions';
-import { postFavorite, removeFavorite } from '../ApiCall';
+} from '../../actions';
+import { postFavorite, removeFavorite } from '../../thunks/ApiCall';
 
 export const MovieList = (props) => {
 

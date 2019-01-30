@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn, toggleFavorite, addUserFavorite } from '../actions';
-import { checkForUser, fetchFavorites } from '../ApiCall';
+import { logIn, toggleFavorite, addUserFavorite } from '../../actions';
+import { checkForUser, fetchFavorites } from '../../thunks/ApiCall';
 import './login.css';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { cleanFavorites } from '../cleaner';
+import { cleanFavorites } from '../../cleaner';
 
 export class Login extends Component {
   constructor() {

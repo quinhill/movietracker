@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Movie } from '../components/Movie';
+import { Movie } from '../../components/Movie';
 import './favorites-container.css';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { postFavorite, removeFavorite } from '../ApiCall';
+import { postFavorite, removeFavorite } from '../../thunks/ApiCall';
 import { 
   toggleFavorite, 
   addUserFavorite, 
   removeUserFavorite 
-} from '../actions';
+} from '../../actions';
 
 export const FavoritesContainer = (props) => {
 

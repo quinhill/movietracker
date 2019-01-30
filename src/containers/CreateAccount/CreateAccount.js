@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { addNewUser } from '../ApiCall';
+import { addNewUser } from '../../thunks/ApiCall';
 import { connect } from 'react-redux';
-import { createAccount } from '../actions';
+import { createAccount } from '../../actions';
 import './create-account.css';
 import PropTypes from 'prop-types';
 
@@ -25,8 +25,8 @@ export class CreateAccount extends Component {
   }
 
   submitAccount = (event) => {
-    let errorMessage;
     event.preventDefault();
+    let errorMessage;
     const { 
       password, 
       repeatPassword, 

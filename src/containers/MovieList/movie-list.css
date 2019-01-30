@@ -3,5 +3,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-image: url('../assets/mekong-green.png');
+  background-image: url('../../assets/mekong-green.png');
 }

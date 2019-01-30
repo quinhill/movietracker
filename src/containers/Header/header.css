@@ -10,7 +10,7 @@
   grid-column: 2/3;
   grid-row: 1 / 3;
   width: 460px;
-  background-image: url('../assets/movie-tracker-title.png');
+  background-image: url('../../assets/movie-tracker-title.png');
   background-repeat: no-repeat;
 }
 
